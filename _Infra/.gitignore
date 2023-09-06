@@ -1,0 +1,10 @@
+# Ignore Terraform state files and logs
+*.tfstate
+*.tfstate.backup
+*.log
+
+# Ignore files with sensitive information
+secrets.tfvars
+
+# Docker mounted directories for storing confluent and postegres data
+local_data/

@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  crypto_scrapper:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/usr/src/app

@@ -1,0 +1,8 @@
+# Use the Bitnami Spark base image
+FROM bitnami/spark:3.3.3
+
+USER root
+# COPY ./src/spark_app.py /app/ # mounted the directory instead, to not have to rebuild for each code change
+
+# Set the entrypoint to run spark-submit
+ENTRYPOINT ["/opt/bitnami/spark/bin/spark-submit", "--master", "spark://spark-master:7077", "--packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.3", "/app/spark_app.py"]

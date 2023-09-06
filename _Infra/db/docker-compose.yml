@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  db:
+    image: "postgres:15.4-bookworm"
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: processed_data_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./local_data/postgres:/var/lib/postgresql/data
+    networks:
+      - db-network
+
+  pgadmin:
+    image: "dpage/pgadmin4"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "8082:80"
+    volumes:
+      - ./local_data/pgAdmin:/var/lib/pgadmin
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    external: true

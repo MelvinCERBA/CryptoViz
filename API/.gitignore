@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment files
+.env
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Database docker volume
+db/
