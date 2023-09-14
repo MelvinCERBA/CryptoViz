@@ -20,7 +20,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: "admin@example.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
-      - "8082:80"
+      - "8092:80"
     volumes:
       - ./local_data/pgAdmin:/var/lib/pgadmin
     networks:

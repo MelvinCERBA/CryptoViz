@@ -2,9 +2,30 @@
 
 This repository contains the Spark application for processing real-time analytics. Written in Python.
 
+## Introduction
+
+### The data
+
+Must's:
+
+- **Prices :** Real-time and historical price data for various cryptocurrencies
+- **Volumes :** Transaction volumes over a specific period can offer insight into market trends
+
+Nice to have's:
+
+- **News and Events**: Important news articles, updates, and events that could affect cryptocurrency prices.
+- **Regulatory Updates**: Government actions, legal changes, or policy shifts regarding cryptocurrencies.
+
+### The challenges
+
+- Finding the data
+- Rate limits : be carefull not to get banned from scraped sites
+- Evaluating the data's reliability : fake news ? errors ? ...
+
 ## Getting Started
 
 ### Run the service locally
+
 1. Install Docker
 2. Clone this repository
 3. Build and run the local Kafka cluster (confluent platform) : `docker compose up -d` in ./kafka_cluster
@@ -13,9 +34,10 @@ This repository contains the Spark application for processing real-time analytic
 
 You can see the output of the app in the logs of the spar-submitter container in Docker Desktop.
 
-## Tutorials
+### Tutorials
 
 - [Getting started with Confluent/Kafka locally](https://docs.confluent.io/platform/current/platform-quickstart.html#ce-docker-quickstart)
+   Hierarchical Topics: Kafka also supports topic hierarchies, so you could have something like cryptocurrency.bitcoin.price and cryptocurrency bitcoin.news as separate but logically connected topics.
 
 ## Dependencies
 

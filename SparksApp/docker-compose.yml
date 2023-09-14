@@ -10,7 +10,7 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
     ports:
-      - '8080:8080'
+      - '8079:8080' # changed to port 8079 because of conflict  
       - '7077:7077'
     networks:
       - confluent-network

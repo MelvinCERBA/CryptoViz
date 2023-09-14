@@ -1,6 +1,6 @@
 # CryptoViz Infrastructure
 
-This repository contains all the infrastructure-as-code (IaC) files for the CryptoViz project.
+This repository contains all the infrastructure-as-code (IaC) files for the CryptoViz project, as well as the local emulators of Confluent Cloud and Cloud SQL.
 
 ## Tools
 
@@ -17,6 +17,8 @@ This repository contains all the infrastructure-as-code (IaC) files for the Cryp
 3. Deploy the stack with `terraform apply`
 
 ### Development 
+
+...
 
 #### Run Confluent Platform locally
 
