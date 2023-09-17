@@ -20,6 +20,12 @@ if [ $(check_network "db-network") -eq 0 ]; then
     docker network create db-network
 fi
 
+# Create "api-network" if it doesn't exist
+if [ $(check_network "api-network") -eq 0 ]; then
+    echo "Creating api-network..."
+    docker network create api-network
+fi
+
 # Remove all exited docker containers
 docker ps -a --filter "status=exited" -q | xargs -r docker rm
 

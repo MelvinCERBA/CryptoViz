@@ -16,9 +16,13 @@ services:
       - DB_NAME=processed_data_db
     networks:
       - db-network
+      - api-network
+    command: npm run dev
 
 networks:
   db-network:
+    external: true
+  api-network:
     external: true
 
 

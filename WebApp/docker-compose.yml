@@ -8,3 +8,10 @@ services:
       - "5173:5173"
     volumes:
       - ./app:/app
+    command: npm run dev
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    external: true
