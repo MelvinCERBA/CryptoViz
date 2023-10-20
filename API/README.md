@@ -18,7 +18,7 @@ Express.js-based RESTful API for the CryptoViz project. Written in typescript.
 - Express.js
 - Sequelize for ORM & Migrations
 
-## Endpoints
+## Sequelize
 
 - `/`: default "hello world" endpoint
 
