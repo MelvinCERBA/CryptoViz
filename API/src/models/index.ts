@@ -10,5 +10,8 @@ export const sequelize = new Sequelize({
     dialect:    'postgres',
     models:     [User],
 });
-sequelize.authenticate();
-module.exports = sequelize;
+sequelize.authenticate()
+    .then(() => console.log('Connection has been established successfully.'))
+    .catch(err => console.error('Unable to connect to the database:', err));
+
+export default sequelize;

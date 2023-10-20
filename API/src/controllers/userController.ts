@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User.model'; //  User model to be defined with Sequelize.
+import { User } from '../models/User.model'; 
 
 export const register = async (req: Request, res: Response) => {
     try {
