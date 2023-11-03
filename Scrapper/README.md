@@ -1,6 +1,6 @@
 # CryptoViz Scrapper
 
-Web scraping service for collecting cryptocurrency news and data feeds. Built using Scrapy.
+Web scraping service for collecting cryptocurrency news and data feeds. Built using Selenium.
 
 ## Getting Started
 
@@ -8,8 +8,8 @@ Web scraping service for collecting cryptocurrency news and data feeds. Built us
 
 1. Install Docker
 2. Clone this repository
-3. Build the Docker container: `docker build -t scrapper .`
-4. Run the container: `docker run scrapper`
+3. Build the container: `docker-compose build --no-cache`
+3. Run the container: `docker-compose up -d`
 
 ### Develop
 

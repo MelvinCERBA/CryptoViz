@@ -1,8 +1,19 @@
-version: "3.8"
+version: "3"
 services:
-  crypto_scrapper:
-    build: 
-      context: .
-      dockerfile: Dockerfile.dev
+  scraper:
+    build: .
+    image: scraper:latest
+    env_file:
+      - ./.env
     volumes:
-      - ./src:/usr/src/app
+      - scraper-data:/usr/src/app
+
+networks:
+  default:
+    name: kafka-network
+    external: true
+      
+      
+
+volumes:
+  scraper-data:
