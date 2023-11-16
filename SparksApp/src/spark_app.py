@@ -10,8 +10,8 @@ def main():
         .getOrCreate()
 
     # Define Kafka parameters
-    kafka_bootstrap_servers = 'broker:9092'
-    kafka_topic = 'users'
+    kafka_bootstrap_servers = 'broker:29092'
+    kafka_topic = 'crypto.cryptocompare'
 
     # Create a DataFrame that streams data from Kafka
     kafkaStreamDF = spark \
@@ -22,24 +22,25 @@ def main():
         .load()
 
     # Define schemas
-    userSchema = StructType([
-        StructField("registertime", LongType(), True),
-        StructField("userid", StringType(), True),
-        StructField("regionid", StringType(), True),
-        StructField("gender", StringType(), True)
-    ])
+    # userSchema = StructType([
+    #     StructField("registertime", LongType(), True),
+    #     StructField("userid", StringType(), True),
+    #     StructField("regionid", StringType(), True),
+    #     StructField("gender", StringType(), True)
+    # ])
 
     # Cast the value column as String
     kafkaStreamValuesDF = kafkaStreamDF.selectExpr("CAST(value AS STRING)")
 
     # Define a schema and use it to parse the JSON data
-    parsedDF = kafkaStreamValuesDF.select(from_json(col("value"), userSchema).alias("message"))
+    # parsedDF = kafkaStreamValuesDF.select(from_json(col("value"), userSchema).alias("message"))
 
     # Output the parsed data to the console (for testing purposes)
-    query = parsedDF \
+    query = kafkaStreamValuesDF \
         .writeStream \
         .outputMode("append") \
         .format("console") \
+        .trigger(processingTime='1 seconds') \
         .start()
 
     query.awaitTermination()

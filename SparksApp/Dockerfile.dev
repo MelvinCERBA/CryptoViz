@@ -2,7 +2,17 @@
 FROM bitnami/spark:3.3.3
 
 USER root
+WORKDIR /usr/src/app
+
 # COPY ./src/spark_app.py /app/ # mounted the directory instead, to not have to rebuild for each code change
+RUN apt-get update
+
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+COPY src/ .
 
 # Set the entrypoint to run spark-submit
-ENTRYPOINT ["/opt/bitnami/spark/bin/spark-submit", "--master", "spark://spark-master:7077", "--packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.3", "/app/spark_app.py"]
+ENTRYPOINT ["/opt/bitnami/spark/bin/spark-submit", "--master", "spark://spark-master:7077", \
+            "--packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.3", \
+            "--conf", "spark.kafka.bootstrap.servers=broker:29092", \
+            "spark_app.py"]

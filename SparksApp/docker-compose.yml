@@ -12,8 +12,6 @@ services:
     ports:
       - '8079:8080' # changed to port 8079 because of conflict  
       - '7077:7077'
-    networks:
-      - confluent-network
 
   spark-worker:
     image: 'bitnami/spark:3.3.3'
@@ -23,22 +21,27 @@ services:
       - SPARK_WORKER_MEMORY=1G
     depends_on:
       - spark-master
-    networks:
-      - confluent-network
   
   spark-submitter:
     build: 
       context: .
       dockerfile: Dockerfile.dev
     volumes:
-      - ./src:/app
+      - spark-submitter:/app
+      - ivy-cache:/tmp/.ivy2
     depends_on:
       - spark-master
-    networks:
-      - confluent-network
+    environment:
+    - SPARK_SUBMIT_OPTS=-Divy.home=/tmp/.ivy2
     # entrypoint: ["tail", "-f", "//dev//null"]
 
 networks:
-  confluent-network:
+  default:
+    name: kafka-network
     external: true
+      
+volumes:
+  spark-submitter:
+  ivy-cache:
+
     
