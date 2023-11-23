@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  postgres:
+    image: "postgres:15.4-bookworm"
+    container_name: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: processed_data_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: "dpage/pgadmin4"
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "8092:80"
+    volumes:
+      - pg-admin-data:/var/lib/pgadmin
+
+networks:
+  default:
+    name: kafka-network
+    external: true
+  #db-network:
+
+
+volumes:
+  db-data:
+  pg-admin-data:
