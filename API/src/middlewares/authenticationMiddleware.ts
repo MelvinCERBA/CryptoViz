@@ -4,17 +4,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { AuthenticatedRequest } from '../types/express/custom-express';
 
-const checkAuthMiddleware = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const checkAuthMiddleware = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     const token = req.headers["authorization"];
-    
     if (!token) {
         return res.status(401).json({ message: "Access denied. No token provided." });
     }
-
     try {
         const decoded = verifyToken(token);
-        req.user = decoded; 
+        req.user! = decoded; 
         next();
     } catch (error) {
         res.status(400).json({ message: "Invalid token." });
@@ -46,3 +46,5 @@ function verifyToken(token: string): any {
         throw new Error("Token is not valid");
     }
 }
+
+export default checkAuthMiddleware;
