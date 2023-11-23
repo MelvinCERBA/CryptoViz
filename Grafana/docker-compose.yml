@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    #restart: unless-stopped
+    environment:
+      GF_LOG_LEVEL: debug
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_HOST: postgres
+      GF_DATABASE_PORT: 5432
+      GF_DATABASE_NAME: crypto
+      GF_DATABASE_USER: myuser
+      GF_DATABASE_PASSWORD: mypassword
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
+
+networks:
+  default:
+    name: kafka-network
+    external: true
+  # db-network:
+  #   external: true
