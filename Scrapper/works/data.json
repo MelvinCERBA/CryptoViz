@@ -1,0 +1,95 @@
+{
+    "timestamp": "2023-11-23 11:07:13.706765",
+    "data": [
+        {
+            "place": "1",
+            "name": "Bitcoin\nBTC",
+            "price": "$ 37,574.56",
+            "volume": "$ 13.13 B",
+            "top_tier_volume": "$ 7.04 B",
+            "market_cap": "$ 734.60 B",
+            "percentage_change": "2.45%"
+        },
+        {
+            "place": "2",
+            "name": "Ethereum\nETH",
+            "price": "$ 2,083.11",
+            "volume": "$ 7.31 B",
+            "top_tier_volume": "$ 3.84 B",
+            "market_cap": "$ 250.49 B",
+            "percentage_change": "2.82%"
+        },
+        {
+            "place": "3",
+            "name": "Solana\nSOL",
+            "price": "$ 58.56",
+            "volume": "$ 1.39 B",
+            "top_tier_volume": "$ 872.86 M",
+            "market_cap": "$ 32.98 B",
+            "percentage_change": "6.53%"
+        },
+        {
+            "place": "4",
+            "name": "USD Coin\nUSDC",
+            "price": "$ 1.000",
+            "volume": "$ 632.52 M",
+            "top_tier_volume": "$ 546.18 M",
+            "market_cap": "$ 24.43 B",
+            "percentage_change": "0.00%"
+        },
+        {
+            "place": "5",
+            "name": "Tether\nUSDT",
+            "price": "$ 1.000",
+            "volume": "$ 521.01 M",
+            "top_tier_volume": "$ 518.24 M",
+            "market_cap": "$ 91.72 B",
+            "percentage_change": "0.00%"
+        },
+        {
+            "place": "6",
+            "name": "XRP\nXRP",
+            "price": "$ 0.6196",
+            "volume": "$ 862.53 M",
+            "top_tier_volume": "$ 418.86 M",
+            "market_cap": "$ 61.95 B",
+            "percentage_change": "3.96%"
+        },
+        {
+            "place": "7",
+            "name": "Binance Coin\nBNB",
+            "price": "$ 236.10",
+            "volume": "$ 442.68 M",
+            "top_tier_volume": "$ 321.82 M",
+            "market_cap": "$ 37.28 B",
+            "percentage_change": "-0.25%"
+        },
+        {
+            "place": "8",
+            "name": "FTX Token\nFTT",
+            "price": "$ 4.582",
+            "volume": "$ 310.70 M",
+            "top_tier_volume": "$ 250.48 M",
+            "market_cap": "$ 1.51 B",
+            "percentage_change": "20.32%"
+        },
+        {
+            "place": "9",
+            "name": "Avalanche\nAVAX",
+            "price": "$ 21.14",
+            "volume": "$ 370.56 M",
+            "top_tier_volume": "$ 193.68 M",
+            "market_cap": "$ 9.15 B",
+            "percentage_change": "4.37%"
+        },
+        {
+            "place": "10",
+            "name": "Chainlink\nLINK",
+            "price": "$ 14.56",
+            "volume": "$ 463.76 M",
+            "top_tier_volume": "$ 191.45 M",
+            "market_cap": "$ 14.56 B",
+            "percentage_change": "2.37%"
+        }
+    ]
+}

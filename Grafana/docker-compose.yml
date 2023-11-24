@@ -10,13 +10,15 @@ services:
       GF_DATABASE_TYPE: postgres
       GF_DATABASE_HOST: postgres
       GF_DATABASE_PORT: 5432
-      GF_DATABASE_NAME: crypto
+      GF_DATABASE_NAME: mydatabase
       GF_DATABASE_USER: myuser
       GF_DATABASE_PASSWORD: mypassword
     ports:
       - "3000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
+
+      #TODO: change default login and password
 
 volumes:
   grafana-data:

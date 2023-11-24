@@ -1,0 +1,96 @@
+{
+    "timestamp": "2023-11-23 11:07:13.706765",
+    "data": [
+        {
+            "place": 1,
+            "name": "Bitcoin BTC",
+            "price": 37574.56,
+            "volume": 13.13,
+            "top_tier_volume": 7.04,
+            "market_cap": 734.60,
+            "percentage_change": 2.45
+        },
+        {
+            "place": 2,
+            "name": "Ethereum ETH",
+            "price": 2083.11,
+            "volume": 7.31,
+            "top_tier_volume": 3.84,
+            "market_cap": 250.49,
+            "percentage_change": 2.82
+        },
+        {
+            "place": 3,
+            "name": "Solana SOL",
+            "price": 58.56,
+            "volume": 1.39,
+            "top_tier_volume": 872.86,
+            "market_cap": 32.98,
+            "percentage_change": 6.53
+        },
+        {
+            "place": 4,
+            "name": "USD Coin USDC",
+            "price": 1.000,
+            "volume": 632.52,
+            "top_tier_volume": 546.18,
+            "market_cap": 24.43,
+            "percentage_change": 0.00
+        },
+        {
+            "place": 5,
+            "name": "Tether USDT",
+            "price": 1.000,
+            "volume": 521.01,
+            "top_tier_volume": 518.24,
+            "market_cap": 91.72,
+            "percentage_change": 0.00
+        },
+        {
+            "place": 6,
+            "name": "XRP XRP",
+            "price": 0.6196,
+            "volume": 862.53,
+            "top_tier_volume": 418.86,
+            "market_cap": 61.95,
+            "percentage_change": 3.96
+        },
+        {
+            "place": 7,
+            "name": "Binance Coin BNB",
+            "price": 236.10,
+            "volume": 442.68,
+            "top_tier_volume": 321.82,
+            "market_cap": 37.28,
+            "percentage_change": -0.25
+        },
+        {
+            "place": 8,
+            "name": "FTX Token FTT",
+            "price": 4.582,
+            "volume": 310.70,
+            "top_tier_volume": 250.48,
+            "market_cap": 1.51,
+            "percentage_change": 20.32
+        },
+        {
+            "place": 9,
+            "name": "Avalanche AVAX",
+            "price": 21.14,
+            "volume": 370.56,
+            "top_tier_volume": 193.68,
+            "market_cap": 9.15 ,
+            "percentage_change": 4.37
+        },
+        {
+            "place": 10,
+            "name": "Chainlink LINK",
+            "price": 14.56,
+            "volume": 463.76,
+            "top_tier_volume": 191.45,
+            "market_cap": 14.56,
+            "percentage_change": 2.37
+        }
+    ]
+
+}
