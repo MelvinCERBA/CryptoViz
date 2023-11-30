@@ -1,81 +1,125 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType
 from pyspark.sql.functions import from_json, col, regexp_replace, udf, explode
-from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType, TimestampType, ArrayType
+from pyspark.sql.types import (
+    StructType,
+    StructField,
+    StringType,
+    LongType,
+    DoubleType,
+    TimestampType,
+    ArrayType,
+)
+
 
 def main():
-    # Initialize a Spark session
-    spark = SparkSession.builder \
-        .appName("KafkaSparkStream") \
-        .getOrCreate()
+    # Initialize a Spark session 
+    # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#)
+    spark = SparkSession.builder.appName("KafkaSparkStream").getOrCreate()
 
     # Define Kafka parameters
-    kafka_bootstrap_servers = 'broker:29092'
-    kafka_topic = 'crypto.cryptocompare'
+    kafka_bootstrap_servers = "broker:29092"
+    kafka_topic = "crypto.cryptocompare"
 
-    # Read data from Kafka
-    kafka_df = spark \
-        .readStream \
-        .format("kafka") \
-        .option("kafka.bootstrap.servers", kafka_bootstrap_servers) \
-        .option("subscribe", kafka_topic) \
-        .load()
+    # Define a SparkStreamReader 
+    # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html#pyspark.sql.streaming.DataStreamReader)
+    kafka_stream_reader = (
+        spark.readStream.format("kafka")
+        .option("kafka.bootstrap.servers", kafka_bootstrap_servers)
+        .option("subscribe", kafka_topic)
+    )
 
-    # Define the schema of the inner JSON objects in the "data" array
-    # data_schema = ArrayType(StructType([
-    #     StructField("place", StringType()),
-    #     StructField("name", StringType()),
-    #     StructField("price", StringType()),
-    #     StructField("volume", StringType()),
-    #     StructField("top_tier_volume", StringType()),
-    #     StructField("market_cap", StringType()),
-    #     StructField("percentage_change", StringType())
-    # ]))
-
-    # # Define schema of your JSON data
-    # json_schema = StructType([
-    #     StructField("timestamp", TimestampType()),
-    #     StructField("data", data_schema)
-    # ])
-
-    # # Convert binary "value" column to string and parse JSON
-    # parsed_df = kafka_df.select(from_json(col("value").cast("string"), json_schema).alias("parsed_data"))
-
-    # # Explode the nested JSON array into individual rows
-    # exploded_df = parsed_df.select("parsed_data.timestamp", explode("parsed_data.data").alias("data"))
-
-    # # Flatten the DataFrame
-    # flattened_df = exploded_df.select(
-    #     "timestamp",
-    #     col("data.place").alias("place"),
-    #     col("data.name").alias("name"),
-    #     col("data.price").alias("price"),
-    #     col("data.volume").alias("volume"),
-    #     col("data.top_tier_volume").alias("top_tier_volume"),
-    #     col("data.market_cap").alias("market_cap"),
-    #     col("data.percentage_change").alias("percentage_change")
-    # )
-
-    # print("FLATTENED DF:", flattened_df)
-    # print()
-    #foreach_batch_function(flattened_df)
+    # Generate DataFrame from the Stream 
+    # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame)
+    # +------------------+------------------+---- SHAPE OF THE DATA -----+---------------------+-------------+
+    # | key              | value            | topic   |partition| offset | timestamp           |timestampType|
+    # +------------------+------------------+---------+---------+--------+---------------------+-------------+
+    # | [binary key]     | [binary value]   | "topic1"|   0     | 123    | 2021-01-01 10:00:00 |      0      |
+    # +------------------+------------------+---------+---------+--------+---------------------+-------------+
+    kafka_df = kafka_stream_reader.load()
     
-    # Apply the cleaning function
-    #cleaned_df = format_cryptocompare(flattened_df)
+    # SCHEMAS
+    # Define the schema of the inner JSON objects in the "data" array
+    data_schema = ArrayType(StructType([
+        StructField("place", StringType()),
+        StructField("name", StringType()),
+        StructField("price", StringType()),
+        StructField("volume", StringType()),
+        StructField("top_tier_volume", StringType()),
+        StructField("market_cap", StringType()),
+        StructField("percentage_change", StringType())
+    ]))
+    # Define schema of your JSON data
+    json_schema = StructType([
+        StructField("timestamp", TimestampType()),
+        StructField("data", data_schema)
+    ])
 
-    #print("CLEANED_DF:\n", cleaned_df)
+    # Convert binary "value" column to string and parse JSON
+    # +------------ SHAPE OF THE DATA ----------+
+    # | parsed_data                             |
+    # +-----------------------------------------+
+    # | {timestamp: "2021-01-01 10:00:00",      |
+    # |  data: {field1: "value1", field2: 100}} |
+    # +-----------------------------------------+
+    parsed_df = kafka_df.select(from_json(col("value").cast("string"), json_schema).alias("parsed_data"))
+
+    # Explode the nested JSON array into individual columns
+    # +------------ SHAPE OF THE DATA -----------+------------+
+    # | timestamp              | data                         |
+    # +------------------------+------------------------------+
+    # | "2021-01-01 10:00:00"  | {name:"A", field1:"", ...},  |
+    # +-------------------------------------------------------+
+    # | "2021-01-01 10:00:00"  | {name:"B"m field1:"", ...},  |
+    # +-------------------------------------------------------+
+    exploded_df = parsed_df.select(
+        col("parsed_data.timestamp"),
+        explode(col("parsed_data.data")).alias("data")
+    )
+
+    # Explode the array into individual rows
+    # +------------ SHAPE OF THE DATA -----------+-----------+
+    # | timestamp              |  Name           |...        |
+    # +------------------------+-----------------+-----------+
+    # | "2021-01-01 10:00:00"  | A               | ...,      |
+    # +------------------------------------------------------+
+    # | "2021-01-01 10:00:00"  | B               | ...,      |
+    # +------------------------------------------------------+
+    # Flatten the DataFrame
+    flattened_df = exploded_df.select(
+        "timestamp",
+        col("data.place").alias("place"),
+        col("data.name").alias("name"),
+        col("data.price").alias("price"),
+        col("data.volume").alias("volume"),
+        col("data.top_tier_volume").alias("top_tier_volume"),
+        col("data.market_cap").alias("market_cap"),
+        col("data.percentage_change").alias("percentage_change")
+    )
+
+    # +--------------------+-----+--------------------+--------+--------+--------------------+--------------------+-----------------+
+    # |           timestamp|place|                name|   price|  volume|     top_tier_volume|          market_cap|percentage_change|
+    # +--------------------+-----+--------------------+--------+--------+--------------------+--------------------+-----------------+
+    # |2023-11-30 14:00:...|    1|        Bitcoin\nBTC|37730.93|  9.04E9|              4.94E9|            7.379E11|             0.28|
+    # |2023-11-30 14:00:...|    2|       Ethereum\nETH| 2035.45|  4.16E9|2.0099999999999998E9|           2.4474E11|             0.94|
+    # +--------------------+-----+--------------------+--------+--------+--------------------+--------------------+-----------------+
+    clean_df = format_cryptocompare(flattened_df)
+
+    # Display data in console
+    query = clean_df.writeStream.outputMode("update").format("console").start()
 
     # Output the parsed data to the console (for testing purposes)
-    query = kafka_df \
-        .writeStream \
-        .outputMode("append") \
-        .foreachBatch(foreach_batch_function)\
-        .trigger(processingTime='1 seconds') \
-        .start()
-    
-    #.format("console") \
+    # query = (
+    #     kafka_df.writeStream.outputMode("append")
+    #     .foreachBatch(foreach_batch_function)
+    #     .trigger(processingTime="1 seconds")
+    #     .start()
+    # )
+
+    # .format("console") \
 
     query.awaitTermination()
+
 
 def foreach_batch_function(df, epoch_id):
     print("HELLO")
@@ -87,32 +131,38 @@ def foreach_batch_function(df, epoch_id):
 
 
 def format_cryptocompare(df):
-        # format M and B to real numbers
-        def convert_value(val: str):
-            if val is None:
-                return None
-            val = val.replace(',', '').upper()  # remove "," and uppercase letts
-            if val.endswith('B'):
-                return float(val.replace('B', '')) * 1e9  # billions (milliards)
-            elif val.endswith('M'):
-                return float(val.replace('M', '')) * 1e6  # millions
-            else:
-                return float(val)  # convert directly
-            
-        convert_udf = udf(convert_value, DoubleType())
-            
-        df = df.withColumn("price", regexp_replace("price", "[^\d\.MB]", ""))\
-                .withColumn("price", convert_udf(col("price")))
-        df = df.withColumn("volume", regexp_replace("volume", "[^\d\.MB]", ""))\
-                .withColumn("volume", convert_udf(col("volume")))
-        df = df.withColumn("top_tier_volume", regexp_replace("top_tier_volume", "[^\d\.MB]", ""))\
-                .withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
-        df = df.withColumn("market_cap", regexp_replace("market_cap", "[^\d\.MB]", ""))\
-                .withColumn("market_cap", convert_udf(col("market_cap")))
-        df = df.withColumn("percentage_change", regexp_replace("percentage_change", "[^\d\.]", ""))\
-                .withColumn("percentage_change", col("percentage_change").cast(DoubleType()))
+    # format M and B to real numbers
+    def convert_value(val: str):
+        if val is None:
+            return None
+        val = val.replace(",", "").upper()  # remove "," and uppercase letts
+        if val.endswith("B"):
+            return float(val.replace("B", "")) * 1e9  # billions (milliards)
+        elif val.endswith("M"):
+            return float(val.replace("M", "")) * 1e6  # millions
+        else:
+            return float(val)  # convert directly
 
-        return df
+    convert_udf = udf(convert_value, DoubleType())
+
+    df = df.withColumn("price", regexp_replace("price", "[^\d\.MB]", "")).withColumn(
+        "price", convert_udf(col("price"))
+    )
+    df = df.withColumn("volume", regexp_replace("volume", "[^\d\.MB]", "")).withColumn(
+        "volume", convert_udf(col("volume"))
+    )
+    df = df.withColumn(
+        "top_tier_volume", regexp_replace("top_tier_volume", "[^\d\.MB]", "")
+    ).withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
+    df = df.withColumn(
+        "market_cap", regexp_replace("market_cap", "[^\d\.MB]", "")
+    ).withColumn("market_cap", convert_udf(col("market_cap")))
+    df = df.withColumn(
+        "percentage_change", regexp_replace("percentage_change", "[^\d\.]", "")
+    ).withColumn("percentage_change", col("percentage_change").cast(DoubleType()))
+
+    return df
+
 
 if __name__ == "__main__":
     main()
