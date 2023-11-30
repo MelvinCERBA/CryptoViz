@@ -1,6 +1,6 @@
 {
-	"Id": "c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374",
-	"Created": "2023-11-30T15:43:37.608696031Z",
+	"Id": "3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458",
+	"Created": "2023-11-30T15:44:00.582271546Z",
 	"Path": "/opt/bitnami/spark/bin/spark-submit",
 	"Args": [
 		"--master",
@@ -18,17 +18,17 @@
 		"Restarting": false,
 		"OOMKilled": false,
 		"Dead": false,
-		"Pid": 56499,
+		"Pid": 66961,
 		"ExitCode": 0,
 		"Error": "",
-		"StartedAt": "2023-11-30T15:43:39.047747012Z",
+		"StartedAt": "2023-11-30T15:44:01.290491419Z",
 		"FinishedAt": "0001-01-01T00:00:00Z"
 	},
-	"Image": "sha256:952cc8d10d95a245e74bf7cf975a6e25fdc8d751541b5e14e4ee498e8180ed26",
-	"ResolvConfPath": "/var/lib/docker/containers/c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374/resolv.conf",
-	"HostnamePath": "/var/lib/docker/containers/c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374/hostname",
-	"HostsPath": "/var/lib/docker/containers/c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374/hosts",
-	"LogPath": "/var/lib/docker/containers/c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374/c60ecb70d6c9de62a549c3c8d38612d0c63c2924d053a18efbfcf97500e63374-json.log",
+	"Image": "sha256:8c535f8a21f8960e97e30dfb81b09ed48109fb2788fc35e9f826de578e0376fd",
+	"ResolvConfPath": "/var/lib/docker/containers/3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458/resolv.conf",
+	"HostnamePath": "/var/lib/docker/containers/3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458/hostname",
+	"HostsPath": "/var/lib/docker/containers/3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458/hosts",
+	"LogPath": "/var/lib/docker/containers/3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458/3311f2c073c621f183bab957e50acd0e30d4e877bda7275069aeacccfefd4458-json.log",
 	"Name": "/sparksapp-spark-submitter-1",
 	"RestartCount": 0,
 	"Driver": "overlay2",
@@ -37,7 +37,7 @@
 	"ProcessLabel": "",
 	"AppArmorProfile": "",
 	"ExecIDs": [
-		"2917ede400f974205a109aa4922377015026baf6b7b8e200f4d56e0088ff0481"
+		"6889c8abf2335fa89e542503df0bd755c6a65d80d35b1268cde3112e9166cc58"
 	],
 	"HostConfig": {
 		"Binds": null,
@@ -46,7 +46,7 @@
 			"Type": "json-file",
 			"Config": {}
 		},
-		"NetworkMode": "13080a21bdbd14ef3f095b6f545a34612529642c1cd40d9f96d2a6a4a182bca6",
+		"NetworkMode": "b211e3f2ab6726cf4e2cab4c02c5e10a0140cf9ee1a214463ee8f6b27bb5972d",
 		"PortBindings": {},
 		"RestartPolicy": {
 			"Name": "",
@@ -113,14 +113,14 @@
 		"Mounts": [
 			{
 				"Type": "volume",
-				"Source": "sparksapp_ivy-cache",
-				"Target": "/tmp/.ivy2",
+				"Source": "sparksapp_spark-submitter",
+				"Target": "/app",
 				"VolumeOptions": {}
 			},
 			{
 				"Type": "volume",
-				"Source": "sparksapp_spark-submitter",
-				"Target": "/app",
+				"Source": "sparksapp_ivy-cache",
+				"Target": "/tmp/.ivy2",
 				"VolumeOptions": {}
 			}
 		],
@@ -146,24 +146,14 @@
 	},
 	"GraphDriver": {
 		"Data": {
-			"LowerDir": "/var/lib/docker/overlay2/64365743075df89be1d6df2675fd10efdab8a8c64eba056ed23b7ed595c4ab50-init/diff:/var/lib/docker/overlay2/j618tvjgex5msdcw16wcmn31p/diff:/var/lib/docker/overlay2/ylwgyvmhpcb5oggo5dlaglb39/diff:/var/lib/docker/overlay2/nrymcunwyl99oqqc2eefjus4l/diff:/var/lib/docker/overlay2/jza88wx16cmgzq70199bbqvio/diff:/var/lib/docker/overlay2/q8zw6q7l1kz0gbn13o3qncihk/diff:/var/lib/docker/overlay2/1f58e70e17790bd2a1361e632ba70b8d1d86f4910b70592bd72d1691478fd866/diff",
-			"MergedDir": "/var/lib/docker/overlay2/64365743075df89be1d6df2675fd10efdab8a8c64eba056ed23b7ed595c4ab50/merged",
-			"UpperDir": "/var/lib/docker/overlay2/64365743075df89be1d6df2675fd10efdab8a8c64eba056ed23b7ed595c4ab50/diff",
-			"WorkDir": "/var/lib/docker/overlay2/64365743075df89be1d6df2675fd10efdab8a8c64eba056ed23b7ed595c4ab50/work"
+			"LowerDir": "/var/lib/docker/overlay2/07305ca39a0126b9eda5a90b8c16825d86e8b78b6058fdf51406c950f15e2b46-init/diff:/var/lib/docker/overlay2/blbavw2zfzs6y2boru8t8kiz5/diff:/var/lib/docker/overlay2/zzv4sw6h9vd2dbsrchaa8bwh7/diff:/var/lib/docker/overlay2/rxpw3h8hkmvx3fnuofaputaif/diff:/var/lib/docker/overlay2/w8subhl6u2vsf1f1bnr7tr32o/diff:/var/lib/docker/overlay2/tmyvg1mkg5zrzn18fvv6a0172/diff:/var/lib/docker/overlay2/cf242e9fc9802c2e4f6e808a703fa50e13f7b16173dfdc441fcf7df712b5ce01/diff",
+			"MergedDir": "/var/lib/docker/overlay2/07305ca39a0126b9eda5a90b8c16825d86e8b78b6058fdf51406c950f15e2b46/merged",
+			"UpperDir": "/var/lib/docker/overlay2/07305ca39a0126b9eda5a90b8c16825d86e8b78b6058fdf51406c950f15e2b46/diff",
+			"WorkDir": "/var/lib/docker/overlay2/07305ca39a0126b9eda5a90b8c16825d86e8b78b6058fdf51406c950f15e2b46/work"
 		},
 		"Name": "overlay2"
 	},
 	"Mounts": [
-		{
-			"Type": "volume",
-			"Name": "sparksapp_ivy-cache",
-			"Source": "/var/lib/docker/volumes/sparksapp_ivy-cache/_data",
-			"Destination": "/tmp/.ivy2",
-			"Driver": "local",
-			"Mode": "z",
-			"RW": true,
-			"Propagation": ""
-		},
 		{
 			"Type": "volume",
 			"Name": "sparksapp_spark-submitter",
@@ -173,10 +163,20 @@
 			"Mode": "z",
 			"RW": true,
 			"Propagation": ""
+		},
+		{
+			"Type": "volume",
+			"Name": "sparksapp_ivy-cache",
+			"Source": "/var/lib/docker/volumes/sparksapp_ivy-cache/_data",
+			"Destination": "/tmp/.ivy2",
+			"Driver": "local",
+			"Mode": "z",
+			"RW": true,
+			"Propagation": ""
 		}
 	],
 	"Config": {
-		"Hostname": "c60ecb70d6c9",
+		"Hostname": "3311f2c073c6",
 		"Domainname": "",
 		"User": "root",
 		"AttachStdin": false,
@@ -222,20 +222,19 @@
 			"com.docker.compose.config-hash": "8faa1a2bbb780c17f14628343d140eda6d3279d2118969a0d10e4b5d70d50d41",
 			"com.docker.compose.container-number": "1",
 			"com.docker.compose.depends_on": "spark-master:service_started:false",
-			"com.docker.compose.image": "sha256:952cc8d10d95a245e74bf7cf975a6e25fdc8d751541b5e14e4ee498e8180ed26",
+			"com.docker.compose.image": "sha256:8c535f8a21f8960e97e30dfb81b09ed48109fb2788fc35e9f826de578e0376fd",
 			"com.docker.compose.oneoff": "False",
 			"com.docker.compose.project": "sparksapp",
-			"com.docker.compose.project.config_files": "/mnt/c/Users/nivle/Documents/Ecole/Epitech/T-900/T-900-DAT/CryptoViz/SparksApp/docker-compose.yml",
-			"com.docker.compose.project.working_dir": "/mnt/c/Users/nivle/Documents/Ecole/Epitech/T-900/T-900-DAT/CryptoViz/SparksApp",
+			"com.docker.compose.project.config_files": "C:\\Users\\loannmr\\Documents\\DEV\\Epitech\\T-DAT-901-LYO_1\\SparksApp\\docker-compose.yml",
+			"com.docker.compose.project.working_dir": "C:\\Users\\loannmr\\Documents\\DEV\\Epitech\\T-DAT-901-LYO_1\\SparksApp",
 			"com.docker.compose.service": "spark-submitter",
 			"com.docker.compose.version": "2.23.0",
 			"com.vmware.cp.artifact.flavor": "sha256:1e1b4657a77f0d47e9220f0c37b9bf7802581b93214fff7d1bd2364c8bf22e8e",
-			"desktop.docker.io/wsl-distro": "Ubuntu",
 			"org.opencontainers.image.base.name": "docker.io/bitnami/minideb:bullseye",
-			"org.opencontainers.image.created": "2023-11-16T13:42:05Z",
+			"org.opencontainers.image.created": "2023-10-25T16:11:46Z",
 			"org.opencontainers.image.description": "Application packaged by VMware, Inc",
 			"org.opencontainers.image.licenses": "Apache-2.0",
-			"org.opencontainers.image.ref.name": "3.3.3-debian-11-r41",
+			"org.opencontainers.image.ref.name": "3.3.3-debian-11-r36",
 			"org.opencontainers.image.title": "spark",
 			"org.opencontainers.image.vendor": "VMware, Inc.",
 			"org.opencontainers.image.version": "3.3.3"
@@ -243,12 +242,12 @@
 	},
 	"NetworkSettings": {
 		"Bridge": "",
-		"SandboxID": "a7be443b4540dda3db880298ef9d9192d756ddb6a70e272caee09031363a998a",
+		"SandboxID": "fd0f9b8fa8737baf46041ebdfc98e9d5fc2ff9633d2516a505085ba9184c0c75",
 		"HairpinMode": false,
 		"LinkLocalIPv6Address": "",
 		"LinkLocalIPv6PrefixLen": 0,
 		"Ports": {},
-		"SandboxKey": "/var/run/docker/netns/a7be443b4540",
+		"SandboxKey": "/var/run/docker/netns/fd0f9b8fa873",
 		"SecondaryIPAddresses": null,
 		"SecondaryIPv6Addresses": null,
 		"EndpointID": "",
@@ -266,17 +265,17 @@
 				"Aliases": [
 					"sparksapp-spark-submitter-1",
 					"spark-submitter",
-					"c60ecb70d6c9"
+					"3311f2c073c6"
 				],
-				"NetworkID": "13080a21bdbd14ef3f095b6f545a34612529642c1cd40d9f96d2a6a4a182bca6",
-				"EndpointID": "394d327c8975a0e81aba99e6671d28f91445632dc3d63af5c89908ed7ecf33b2",
-				"Gateway": "172.22.0.1",
-				"IPAddress": "172.22.0.13",
+				"NetworkID": "b211e3f2ab6726cf4e2cab4c02c5e10a0140cf9ee1a214463ee8f6b27bb5972d",
+				"EndpointID": "c00371c31a0e499d1f4cf10df3b36dd400c1cfcc931c37c23034f2393a953a45",
+				"Gateway": "172.19.0.1",
+				"IPAddress": "172.19.0.12",
 				"IPPrefixLen": 16,
 				"IPv6Gateway": "",
 				"GlobalIPv6Address": "",
 				"GlobalIPv6PrefixLen": 0,
-				"MacAddress": "02:42:ac:16:00:0d",
+				"MacAddress": "02:42:ac:13:00:0c",
 				"DriverOpts": null
 			}
 		}
