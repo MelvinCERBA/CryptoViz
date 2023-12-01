@@ -32,7 +32,9 @@ services:
     depends_on:
       - spark-master
     environment:
-    - SPARK_SUBMIT_OPTS=-Divy.home=/tmp/.ivy2
+      - SPARK_SUBMIT_OPTS=-Divy.home=/tmp/.ivy2
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
     # entrypoint: ["tail", "-f", "//dev//null"]
 
 networks:

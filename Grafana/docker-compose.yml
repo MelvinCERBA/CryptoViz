@@ -10,22 +10,18 @@ services:
       GF_DATABASE_TYPE: postgres
       GF_DATABASE_HOST: postgres
       GF_DATABASE_PORT: 5432
-      GF_DATABASE_NAME: mydatabase
-      GF_DATABASE_USER: myuser
-      GF_DATABASE_PASSWORD: mypassword
+      GF_DATABASE_NAME: crypto_viz
+      GF_DATABASE_USER: root
+      GF_DATABASE_PASSWORD: root
     ports:
       - "3000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
-
-      #TODO: change default login and password
 
 volumes:
   grafana-data:
 
 networks:
   default:
-    name: kafka-network
+    name: db-network
     external: true
-  # db-network:
-  #   external: true
