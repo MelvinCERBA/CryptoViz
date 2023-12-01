@@ -13,15 +13,16 @@ from pyspark.sql.types import (
 
 
 def main():
-    # Initialize a Spark session 
+    # Initialize a Spark session
     # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#)
     spark = SparkSession.builder.appName("KafkaSparkStream").getOrCreate()
+    spark.sparkContext.setLogLevel("WARN")
 
     # Define Kafka parameters
     kafka_bootstrap_servers = "broker:29092"
     kafka_topic = "crypto.cryptocompare"
 
-    # Define a SparkStreamReader 
+    # Define a SparkStreamReader
     # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html#pyspark.sql.streaming.DataStreamReader)
     kafka_stream_reader = (
         spark.readStream.format("kafka")
@@ -29,7 +30,7 @@ def main():
         .option("subscribe", kafka_topic)
     )
 
-    # Generate DataFrame from the Stream 
+    # Generate DataFrame from the Stream
     # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame)
     # +------------------+------------------+---- SHAPE OF THE DATA -----+---------------------+-------------+
     # | key              | value            | topic   |partition| offset | timestamp           |timestampType|
@@ -37,23 +38,26 @@ def main():
     # | [binary key]     | [binary value]   | "topic1"|   0     | 123    | 2021-01-01 10:00:00 |      0      |
     # +------------------+------------------+---------+---------+--------+---------------------+-------------+
     kafka_df = kafka_stream_reader.load()
-    
+
     # SCHEMAS
     # Define the schema of the inner JSON objects in the "data" array
-    data_schema = ArrayType(StructType([
-        StructField("place", StringType()),
-        StructField("name", StringType()),
-        StructField("price", StringType()),
-        StructField("volume", StringType()),
-        StructField("top_tier_volume", StringType()),
-        StructField("market_cap", StringType()),
-        StructField("percentage_change", StringType())
-    ]))
+    data_schema = ArrayType(
+        StructType(
+            [
+                StructField("place", StringType()),
+                StructField("name", StringType()),
+                StructField("price", StringType()),
+                StructField("volume", StringType()),
+                StructField("top_tier_volume", StringType()),
+                StructField("market_cap", StringType()),
+                StructField("percentage_change", StringType()),
+            ]
+        )
+    )
     # Define schema of your JSON data
-    json_schema = StructType([
-        StructField("timestamp", TimestampType()),
-        StructField("data", data_schema)
-    ])
+    json_schema = StructType(
+        [StructField("timestamp", TimestampType()), StructField("data", data_schema)]
+    )
 
     # Convert binary "value" column to string and parse JSON
     # +------------ SHAPE OF THE DATA ----------+
@@ -62,7 +66,11 @@ def main():
     # | {timestamp: "2021-01-01 10:00:00",      |
     # |  data: {field1: "value1", field2: 100}} |
     # +-----------------------------------------+
-    parsed_df = kafka_df.select(from_json(col("value").cast("string"), json_schema).alias("parsed_data"))
+    parsed_df = kafka_df.select(
+        from_json(col("value").cast("string"), json_schema).alias("parsed_data")
+    )
+    query_parsed = parsed_df.writeStream.outputMode("update").format("console").start()
+
 
     # Explode the nested JSON array into individual columns
     # +------------ SHAPE OF THE DATA -----------+------------+
@@ -73,9 +81,9 @@ def main():
     # | "2021-01-01 10:00:00"  | {name:"B"m field1:"", ...},  |
     # +-------------------------------------------------------+
     exploded_df = parsed_df.select(
-        col("parsed_data.timestamp"),
-        explode(col("parsed_data.data")).alias("data")
+        col("parsed_data.timestamp"), explode(col("parsed_data.data")).alias("data")
     )
+    query_exploded = exploded_df.writeStream.outputMode("update").format("console").start()
 
     # Explode the array into individual rows
     # +------------ SHAPE OF THE DATA -----------+-----------+
@@ -94,8 +102,11 @@ def main():
         col("data.volume").alias("volume"),
         col("data.top_tier_volume").alias("top_tier_volume"),
         col("data.market_cap").alias("market_cap"),
-        col("data.percentage_change").alias("percentage_change")
+        col("data.percentage_change").alias("percentage_change"),
     )
+    # .explain(True)
+    query_flattened = flattened_df.writeStream.outputMode("update").format("console").start()
+
 
     # +--------------------+-----+--------------------+--------+--------+--------------------+--------------------+-----------------+
     # |           timestamp|place|                name|   price|  volume|     top_tier_volume|          market_cap|percentage_change|
@@ -130,6 +141,39 @@ def foreach_batch_function(df, epoch_id):
     df.show(truncate=False)
 
 
+# def format_cryptocompare(df):
+#     # format M and B to real numbers
+#     def convert_value(val: str):
+#         if val is None:
+#             return None
+#         val = val.replace(",", "").upper()  # remove "," and uppercase letts
+#         if val.endswith("B"):
+#             return float(val.replace("B", "")) * 1e9  # billions (milliards)
+#         elif val.endswith("M"):
+#             return float(val.replace("M", "")) * 1e6  # millions
+#         else:
+#             return float(val)  # convert directly
+
+#     convert_udf = udf(convert_value, DoubleType())
+
+#     df = df.withColumn("price", regexp_replace("price", "[^\d\.MB]", "")).withColumn(
+#         "price", convert_udf(col("price"))
+#     )
+#     df = df.withColumn("volume", regexp_replace("volume", "[^\d\.MB]", "")).withColumn(
+#         "volume", convert_udf(col("volume"))
+#     )
+#     df = df.withColumn(
+#         "top_tier_volume", regexp_replace("top_tier_volume", "[^\d\.MB]", "")
+#     ).withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
+#     df = df.withColumn(
+#         "market_cap", regexp_replace("market_cap", "[^\d\.MB]", "")
+#     ).withColumn("market_cap", convert_udf(col("market_cap")))
+#     df = df.withColumn(
+#         "percentage_change", regexp_replace("percentage_change", "[^\d\.]", "")
+#     ).withColumn("percentage_change", col("percentage_change").cast(DoubleType()))
+
+
+#     return df
 def format_cryptocompare(df):
     # format M and B to real numbers
     def convert_value(val: str):
@@ -143,23 +187,35 @@ def format_cryptocompare(df):
         else:
             return float(val)  # convert directly
 
-    convert_udf = udf(convert_value, DoubleType())
+    try:
+        convert_udf = udf(convert_value, DoubleType())
 
-    df = df.withColumn("price", regexp_replace("price", "[^\d\.MB]", "")).withColumn(
-        "price", convert_udf(col("price"))
-    )
-    df = df.withColumn("volume", regexp_replace("volume", "[^\d\.MB]", "")).withColumn(
-        "volume", convert_udf(col("volume"))
-    )
-    df = df.withColumn(
-        "top_tier_volume", regexp_replace("top_tier_volume", "[^\d\.MB]", "")
-    ).withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
-    df = df.withColumn(
-        "market_cap", regexp_replace("market_cap", "[^\d\.MB]", "")
-    ).withColumn("market_cap", convert_udf(col("market_cap")))
-    df = df.withColumn(
-        "percentage_change", regexp_replace("percentage_change", "[^\d\.]", "")
-    ).withColumn("percentage_change", col("percentage_change").cast(DoubleType()))
+        #  replaces all characters in the "price" column that are not digits, dots, 'M', or 'B' with an empty string
+        df = (
+            df.withColumn("price", regexp_replace("price", "[^\d.MB]", ""))
+            .withColumn("volume", regexp_replace("volume", "[^\d.MB]", ""))
+            .withColumn(
+                "top_tier_volume", regexp_replace("top_tier_volume", "[^\d.MB]", "")
+            )
+            .withColumn("market_cap", regexp_replace("market_cap", "[^\d.MB]", ""))
+            .withColumn(
+                "percentage_change", regexp_replace("percentage_change", "[^\d.MB]", "")
+            )
+        )
+
+        # format M and B to real numbers
+        df = (
+            df.withColumn("price", convert_udf(col("price")))
+            .withColumn("volume", convert_udf(col("volume")))
+            .withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
+            .withColumn("market_cap", convert_udf(col("market_cap")))
+            .withColumn(
+                "percentage_change", col("percentage_change").cast(DoubleType())
+            )
+        )
+
+    except Exception as e:
+        print(e)  # crash with empty dataframe
 
     return df
 
