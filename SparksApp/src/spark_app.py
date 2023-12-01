@@ -1,6 +1,7 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType
-from pyspark.sql.functions import from_json, col, regexp_replace, udf, explode
+from pyspark.sql.functions import from_json, col, regexp_replace, udf, explode, split, lit
 from pyspark.sql.types import (
     StructType,
     StructField,
@@ -11,11 +12,20 @@ from pyspark.sql.types import (
     ArrayType,
 )
 
+database_url = "jdbc:postgresql://postgres:5432/crypto_viz"
+properties = {
+    "user": os.getenv('POSTGRES_USER'),
+    "password": os.getenv('POSTGRES_PASSWORD'),
+    "driver": "org.postgresql.Driver"
+}
 
 def main():
     # Initialize a Spark session
     # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#)
-    spark = SparkSession.builder.appName("KafkaSparkStream").getOrCreate()
+    spark = (SparkSession.builder
+             .appName("KafkaSparkStream")
+             .config("spark.jars", "/opt/bitnami/spark/jars/postgresql-jdbc.jar")
+             .getOrCreate())
     spark.sparkContext.setLogLevel("WARN")
 
     # Define Kafka parameters
@@ -67,10 +77,9 @@ def main():
     # |  data: {field1: "value1", field2: 100}} |
     # +-----------------------------------------+
     parsed_df = kafka_df.select(
-        from_json(col("value").cast("string"), json_schema).alias("parsed_data")
+        from_json(col("value").cast("string"), json_schema)
+        .alias("parsed_data")
     )
-    query_parsed = parsed_df.writeStream.outputMode("update").format("console").start()
-
 
     # Explode the nested JSON array into individual columns
     # +------------ SHAPE OF THE DATA -----------+------------+
@@ -114,32 +123,24 @@ def main():
     # |2023-11-30 14:00:...|    1|        Bitcoin\nBTC|37730.93|  9.04E9|              4.94E9|            7.379E11|             0.28|
     # |2023-11-30 14:00:...|    2|       Ethereum\nETH| 2035.45|  4.16E9|2.0099999999999998E9|           2.4474E11|             0.94|
     # +--------------------+-----+--------------------+--------+--------+--------------------+--------------------+-----------------+
-    clean_df = format_cryptocompare(flattened_df)
+    
+    # clean and format data
+    cleaned_df = format_cryptocompare(flattened_df)
 
-    # Display data in console
-    query = clean_df.writeStream.outputMode("update").format("console").start()
+    # save to DB
+    save_cryptocompare(spark, cleaned_df)
 
-    # Output the parsed data to the console (for testing purposes)
-    # query = (
-    #     kafka_df.writeStream.outputMode("append")
-    #     .foreachBatch(foreach_batch_function)
-    #     .trigger(processingTime="1 seconds")
-    #     .start()
-    # )
-
-    # .format("console") \
-
+    query = (cleaned_df.writeStream
+             .outputMode("update")
+             .format("console")
+             #.trigger(processingTime="1 seconds")
+             .foreachBatch(foreach_batch_function)
+             .start())
     query.awaitTermination()
 
-
-def foreach_batch_function(df, epoch_id):
-    print("HELLO")
-    # Print column names
-    print("Columns:", df.columns)
-
-    # Show the DataFrame contents (for demonstration purposes, limit the number of rows to print)
-    df.show(truncate=False)
-
+    spark.stop() # stop session
+    
+    
 
 # def format_cryptocompare(df):
 #     # format M and B to real numbers
@@ -186,38 +187,67 @@ def format_cryptocompare(df):
             return float(val.replace("M", "")) * 1e6  # millions
         else:
             return float(val)  # convert directly
-
+               
     try:
         convert_udf = udf(convert_value, DoubleType())
 
         #  replaces all characters in the "price" column that are not digits, dots, 'M', or 'B' with an empty string
-        df = (
-            df.withColumn("price", regexp_replace("price", "[^\d.MB]", ""))
-            .withColumn("volume", regexp_replace("volume", "[^\d.MB]", ""))
-            .withColumn(
-                "top_tier_volume", regexp_replace("top_tier_volume", "[^\d.MB]", "")
-            )
-            .withColumn("market_cap", regexp_replace("market_cap", "[^\d.MB]", ""))
-            .withColumn(
-                "percentage_change", regexp_replace("percentage_change", "[^\d.MB]", "")
-            )
-        )
-
+        df = (df
+              .withColumn("price", regexp_replace("price", "[^\d.MB]", ""))
+              .withColumn("volume", regexp_replace("volume", "[^\d.MB]", ""))
+              .withColumn("top_tier_volume", regexp_replace("top_tier_volume", "[^\d.MB]", ""))
+              .withColumn("market_cap", regexp_replace("market_cap", "[^\d.MB]", ""))
+              .withColumn("percentage_change", regexp_replace("percentage_change", "[^\d.MB]", "")))
+        
         # format M and B to real numbers
-        df = (
-            df.withColumn("price", convert_udf(col("price")))
-            .withColumn("volume", convert_udf(col("volume")))
-            .withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
-            .withColumn("market_cap", convert_udf(col("market_cap")))
-            .withColumn(
-                "percentage_change", col("percentage_change").cast(DoubleType())
-            )
-        )
+        df = (df
+              .withColumn("price", convert_udf(col("price")))
+              .withColumn("volume", convert_udf(col("volume")))
+              .withColumn("top_tier_volume", convert_udf(col("top_tier_volume")))
+              .withColumn("market_cap", convert_udf(col("market_cap")))
+              .withColumn("percentage_change", col("percentage_change").cast(DoubleType())))
+        
+        # Split crypto_name and it's symbol into another col
+        splited = split(df['name'], '\\n')
+        df = df.withColumn('symbol', splited.getItem(1))
+        df = df.withColumn('name', splited.getItem(0))
+        
 
     except Exception as e:
-        print(e)  # crash with empty dataframe
+        print(e) # crash with empty dataframe
 
     return df
+
+def save_cryptocompare(spark, df):
+    cryptocompare_schema = StructType([
+        StructField("timestamp", TimestampType()),
+        StructField("place", StringType()),
+        StructField("name", StringType()),
+        StructField("symbol", StringType()),
+        StructField("price", StringType()),
+        StructField("volume", StringType()),
+        StructField("top_tier_volume", StringType()),
+        StructField("market_cap", StringType()),
+        StructField("percentage_change", StringType())
+    ])
+
+    table_name = "cryptocompare"
+    print(properties)
+    try:
+        df_existing = spark.read.jdbc(url=database_url, table=table_name, properties=properties)
+    except:
+        # creates the table if the table doesn't exist
+        df_schema = spark.createDataFrame([], cryptocompare_schema)
+        df_schema.write.jdbc(url=database_url, table=table_name, mode='overwrite', properties=properties)
+    
+    
+
+
+def foreach_batch_function(df, epoch_id):
+    # before inserting, check if df is not empty
+    table_name = "cryptocompare"
+    if not df.rdd.isEmpty():
+        df.write.jdbc(url=database_url, table=table_name, mode='append', properties=properties)
 
 
 if __name__ == "__main__":

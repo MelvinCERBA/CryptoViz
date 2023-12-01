@@ -4,8 +4,12 @@ FROM bitnami/spark:3.3.3
 USER root
 WORKDIR /usr/src/app
 
-# COPY ./src/spark_app.py /app/ # mounted the directory instead, to not have to rebuild for each code change
-RUN apt-get update
+ENV POSTGRES_JDBC_VERSION 42.4.1
+RUN apt-get update && apt-get install -y curl
+
+# Download the PostgreSQL JDBC driver
+RUN curl -o /opt/bitnami/spark/jars/postgresql-jdbc.jar \
+    https://jdbc.postgresql.org/download/postgresql-${POSTGRES_JDBC_VERSION}.jar
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
