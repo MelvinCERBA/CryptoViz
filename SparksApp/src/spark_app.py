@@ -6,7 +6,8 @@ from pyspark.sql.types import (
     StructType,
     StructField,
     StringType,
-    LongType,
+    IntegerType,
+    FloatType,
     DoubleType,
     TimestampType,
     ArrayType,
@@ -124,14 +125,22 @@ def main():
     # save to DB
     save_cryptocompare(spark, cleaned_df)
 
+    cleaned_df.printSchema()
+
     query = (cleaned_df.writeStream
              .outputMode("update")
-             .format("console")
+             .format('jdbc')
              #.trigger(processingTime="1 seconds")
              .foreachBatch(foreach_batch_function)
              .start())
-    query.awaitTermination()
 
+    # query = (cleaned_df.writeStream
+    #          .outputMode("update")
+    #          .format("console")
+    #          #.trigger(processingTime="1 seconds")
+    #          .foreachBatch(foreach_batch_function)
+    #          .start())
+    query.awaitTermination()
     spark.stop() # stop session
     
     
@@ -172,8 +181,10 @@ def format_cryptocompare(df):
         splited = split(df['name'], '\\n')
         df = df.withColumn('symbol', splited.getItem(1))
         df = df.withColumn('name', splited.getItem(0))
-        
 
+        # Convert place to integer
+        df = df.withColumn('place', col("place").cast(IntegerType))
+        
     except Exception as e:
         print(e) # crash with empty dataframe
 
@@ -182,18 +193,17 @@ def format_cryptocompare(df):
 def save_cryptocompare(spark, df):
     cryptocompare_schema = StructType([
         StructField("timestamp", TimestampType()),
-        StructField("place", StringType()),
         StructField("name", StringType()),
         StructField("symbol", StringType()),
-        StructField("price", StringType()),
-        StructField("volume", StringType()),
-        StructField("top_tier_volume", StringType()),
-        StructField("market_cap", StringType()),
-        StructField("percentage_change", StringType())
+        StructField("place", IntegerType()),
+        StructField("price", DoubleType()),
+        StructField("volume", DoubleType()),
+        StructField("top_tier_volume", DoubleType()),
+        StructField("market_cap", DoubleType()),
+        StructField("percentage_change", DoubleType())
     ])
 
     table_name = "cryptocompare"
-    print(properties)
     try:
         df_existing = spark.read.jdbc(url=database_url, table=table_name, properties=properties)
     except:
@@ -202,13 +212,16 @@ def save_cryptocompare(spark, df):
         df_schema.write.jdbc(url=database_url, table=table_name, mode='overwrite', properties=properties)
     
     
+    
 
 
 def foreach_batch_function(df, epoch_id):
     # before inserting, check if df is not empty
+    #if df.head(1):
     table_name = "cryptocompare"
-    if not df.rdd.isEmpty():
-        df.write.jdbc(url=database_url, table=table_name, mode='append', properties=properties)
+    df.write.jdbc(url=database_url, table=table_name, mode='append', properties=properties)
+    print('success')
+    
 
 
 if __name__ == "__main__":
