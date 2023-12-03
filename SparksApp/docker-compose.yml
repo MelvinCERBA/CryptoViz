@@ -27,7 +27,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
-      - spark-submitter:/app
+      - ./src:/usr/src/app
       - ivy-cache:/tmp/.ivy2
     depends_on:
       - spark-master
@@ -43,7 +43,6 @@ networks:
     external: true
       
 volumes:
-  spark-submitter:
   ivy-cache:
 
     
