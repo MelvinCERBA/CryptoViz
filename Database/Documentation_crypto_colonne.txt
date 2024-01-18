@@ -1,4 +1,4 @@
-"place" : Ceci pourrait représenter l'échange ou la plateforme où la cryptomonnaie a été échangée.
+"place" : Cela représente le classement de la cryptomonnaie par rapport à d'autres, probablement sur la base de la capitalisation boursière.
 
 "name" : C'est le nom de la cryptomonnaie concernée. Par exemple, Bitcoin, Ethereum, etc.
 
