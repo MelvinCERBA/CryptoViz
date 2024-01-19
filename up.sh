@@ -30,7 +30,7 @@ fi
 docker ps -a --filter "status=exited" -q | xargs -r docker rm
 
 # Array of specific directories with Docker Compose projects, in the order they should be started
-declare -a dirs=("_Infra/confluent" "Scrapper/" "SparksApp/" "Database/")
+declare -a dirs=("_Infra/confluent" "Scrapper/" "SparksApp/" "Database/" "Grafana") 
 
 # Start Docker Compose projects in specified directories
 for dir in "${dirs[@]}"; do
