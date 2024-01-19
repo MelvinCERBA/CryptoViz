@@ -1,0 +1,1707 @@
+[
+    {
+        "timestamp": "2023-12-01 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 38688.2,
+                "volume": 62500.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 2.59
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2206.369800252416,
+                "volume": 1188637992.3185413,
+                "top_tier_volume": 715530000,
+                "market_cap": 1888912423.8538513,
+                "percentage_change": 2.4888540104894523
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2227.062716174959,
+                "volume": 1169146847.355228,
+                "top_tier_volume": 715530000,
+                "market_cap": 1906627997.1758676,
+                "percentage_change": 3.450067873548229
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020313194920009448,
+                "volume": 476978545.05910033,
+                "top_tier_volume": 353730000,
+                "market_cap": 1373682510.5650692,
+                "percentage_change": 8.163977209847959
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9940773734764502,
+                "volume": 449106957.32424885,
+                "top_tier_volume": 353730000,
+                "market_cap": 24374777197.64256,
+                "percentage_change": -0.5922626523549801
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-02 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 39458.4,
+                "volume": 37090.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 1.99
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2078.22558141767,
+                "volume": 1161145542.0258074,
+                "top_tier_volume": 715530000,
+                "market_cap": 1779205879.205576,
+                "percentage_change": -5.807921175320916
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2129.2119865024692,
+                "volume": 1173609164.4047456,
+                "top_tier_volume": 715530000,
+                "market_cap": 1822856247.3357525,
+                "percentage_change": -4.393712353128108
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0002073069416063392,
+                "volume": 474053529.32678115,
+                "top_tier_volume": 353730000,
+                "market_cap": 1401915952.2899404,
+                "percentage_change": 2.055310561772905
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9483339130574628,
+                "volume": 448431255.9093705,
+                "top_tier_volume": 353730000,
+                "market_cap": 23253147548.168987,
+                "percentage_change": -4.6015995977269935
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-03 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 39970.2,
+                "volume": 35270.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 1.3
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2273.9250822731838,
+                "volume": 1155399798.4652913,
+                "top_tier_volume": 715530000,
+                "market_cap": 1946747702.1881452,
+                "percentage_change": 9.416663070907644
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2277.9293966531404,
+                "volume": 1115175553.039759,
+                "top_tier_volume": 715530000,
+                "market_cap": 1950175866.9411485,
+                "percentage_change": 6.984622061749731
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0001957955662686084,
+                "volume": 485199916.03617924,
+                "top_tier_volume": 353730000,
+                "market_cap": 1324070123.328715,
+                "percentage_change": -5.552817116751479
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9650985572808075,
+                "volume": 456517538.95114785,
+                "top_tier_volume": 353730000,
+                "market_cap": 23664216624.5254,
+                "percentage_change": 1.767799716166947
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-04 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 41987.8,
+                "volume": 104210.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 5.05
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2298.558742215251,
+                "volume": 1137282628.1311615,
+                "top_tier_volume": 715530000,
+                "market_cap": 1967837016.5470703,
+                "percentage_change": 1.08331009381549
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2379.727494593687,
+                "volume": 1154208315.662943,
+                "top_tier_volume": 715530000,
+                "market_cap": 2037327028.9551458,
+                "percentage_change": 4.4688873189008325
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020718720279355247,
+                "volume": 494170554.51461923,
+                "top_tier_volume": 353730000,
+                "market_cap": 1401106216.9745028,
+                "percentage_change": 5.818127929064573
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9383751831439818,
+                "volume": 440490251.26002145,
+                "top_tier_volume": 353730000,
+                "market_cap": 23008959490.690434,
+                "percentage_change": -2.7689787675281115
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-05 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 44076.2,
+                "volume": 96840.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 4.97
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2468.6887338277074,
+                "volume": 1142281698.3557062,
+                "top_tier_volume": 715530000,
+                "market_cap": 2113488327.9410872,
+                "percentage_change": 7.401594246335957
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2318.441550917345,
+                "volume": 1163675245.220727,
+                "top_tier_volume": 715530000,
+                "market_cap": 1984859042.6707947,
+                "percentage_change": -2.575334521098442
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020230030031234277,
+                "volume": 505626888.62833095,
+                "top_tier_volume": 353730000,
+                "market_cap": 1368058473.8907099,
+                "percentage_change": -2.3586893472755444
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.994425718636515,
+                "volume": 445343267.2218949,
+                "top_tier_volume": 353730000,
+                "market_cap": 24383318620.967346,
+                "percentage_change": 5.973147681158672
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-06 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43776.3,
+                "volume": 72520.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -0.68
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2436.077667898539,
+                "volume": 1190931817.248971,
+                "top_tier_volume": 715530000,
+                "market_cap": 2085569414.4472222,
+                "percentage_change": -1.3209873517997157
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2437.237536384119,
+                "volume": 1189975269.9112194,
+                "top_tier_volume": 715530000,
+                "market_cap": 2086562398.484711,
+                "percentage_change": 5.123958610031368
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020450634487873502,
+                "volume": 485912589.10894156,
+                "top_tier_volume": 353730000,
+                "market_cap": 1382976879.637878,
+                "percentage_change": 1.090480124342974
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 1.0445667103571687,
+                "volume": 455830444.3590851,
+                "top_tier_volume": 353730000,
+                "market_cap": 25612775737.957775,
+                "percentage_change": 5.042205846144385
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-07 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43289.7,
+                "volume": 63090.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -1.11
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2541.853780778468,
+                "volume": 1147105821.7199,
+                "top_tier_volume": 715530000,
+                "market_cap": 2176126225.7954407,
+                "percentage_change": 4.342066522500315
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2457.596781982797,
+                "volume": 1150193178.532865,
+                "top_tier_volume": 715530000,
+                "market_cap": 2103992310.7085073,
+                "percentage_change": 0.8353410488205121
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00022040244835868175,
+                "volume": 502996229.2067155,
+                "top_tier_volume": 353730000,
+                "market_cap": 1490474491.030489,
+                "percentage_change": 7.772914571121286
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 1.08414062736176,
+                "volume": 477777457.209039,
+                "top_tier_volume": 353730000,
+                "market_cap": 26583128182.91035,
+                "percentage_change": 3.788548554362778
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-08 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 44175.5,
+                "volume": 58440.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 2.05
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2727.539934270079,
+                "volume": 1187291007.8685281,
+                "top_tier_volume": 715530000,
+                "market_cap": 2335095444.023414,
+                "percentage_change": 7.305146932359835
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2690.8673398562837,
+                "volume": 1207700392.542326,
+                "top_tier_volume": 715530000,
+                "market_cap": 2303699383.764048,
+                "percentage_change": 9.49181572761027
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00024241826392357358,
+                "volume": 497800377.82331526,
+                "top_tier_volume": 353730000,
+                "market_cap": 1639356736.863357,
+                "percentage_change": 9.988916061886677
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 1.0574820634351731,
+                "volume": 483491647.6288559,
+                "top_tier_volume": 353730000,
+                "market_cap": 25929460195.430443,
+                "percentage_change": -2.458958114267891
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-09 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43718.4,
+                "volume": 31670.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -1.03
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2831.0476829621903,
+                "volume": 1233080897.9951851,
+                "top_tier_volume": 715530000,
+                "market_cap": 2423710268.450083,
+                "percentage_change": 3.794912308765558
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2543.4030527211135,
+                "volume": 1267366517.1945035,
+                "top_tier_volume": 715530000,
+                "market_cap": 2177452585.057636,
+                "percentage_change": -5.4801767798425205
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00023048170967715734,
+                "volume": 488428028.2488767,
+                "top_tier_volume": 353730000,
+                "market_cap": 1558635629.8721502,
+                "percentage_change": -4.9239500577314
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9579258873702259,
+                "volume": 493033155.6771379,
+                "top_tier_volume": 353730000,
+                "market_cap": 23488342758.317936,
+                "percentage_change": -9.414455290290636
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-10 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43791.0,
+                "volume": 23810.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.17
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2789.2974418627355,
+                "volume": 1293055833.617656,
+                "top_tier_volume": 715530000,
+                "market_cap": 2387967144.562767,
+                "percentage_change": -1.4747275840924987
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2440.9510574316264,
+                "volume": 1218116369.8383853,
+                "top_tier_volume": 715530000,
+                "market_cap": 2089741609.8943658,
+                "percentage_change": -4.0281462735478275
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00022912862054195868,
+                "volume": 479551453.9193472,
+                "top_tier_volume": 353730000,
+                "market_cap": 1549485346.5830007,
+                "percentage_change": -0.5870700703730303
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9531615026725174,
+                "volume": 490301818.0316283,
+                "top_tier_volume": 353730000,
+                "market_cap": 23371520045.530125,
+                "percentage_change": -0.4973646459005332
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-11 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 41256.1,
+                "volume": 105190.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -5.79
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3051.5280240621414,
+                "volume": 1280012436.4743898,
+                "top_tier_volume": 715530000,
+                "market_cap": 2612467409.4658756,
+                "percentage_change": 9.401312970920877
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2658.139415730514,
+                "volume": 1278919577.6030638,
+                "top_tier_volume": 715530000,
+                "market_cap": 2275680425.8898787,
+                "percentage_change": 8.89769410319163
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0002221605466842905,
+                "volume": 493722087.86413133,
+                "top_tier_volume": 353730000,
+                "market_cap": 1502363654.3612828,
+                "percentage_change": -3.0411189318848897
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8616391227649076,
+                "volume": 479369170.23111135,
+                "top_tier_volume": 353730000,
+                "market_cap": 21127391290.195534,
+                "percentage_change": -9.601980320333459
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-12 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 41487.0,
+                "volume": 57040.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.56
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2875.429347003601,
+                "volume": 1216335061.8034396,
+                "top_tier_volume": 715530000,
+                "market_cap": 2461706200.314966,
+                "percentage_change": -5.770835976925462
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2798.8833602632394,
+                "volume": 1258700918.9873445,
+                "top_tier_volume": 715530000,
+                "market_cap": 2396173819.780444,
+                "percentage_change": 5.29482929675629
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00021819698151485744,
+                "volume": 489110303.42827946,
+                "top_tier_volume": 353730000,
+                "market_cap": 1475559992.139877,
+                "percentage_change": -1.7840994850744751
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9192893054237988,
+                "volume": 473961765.8132612,
+                "top_tier_volume": 353730000,
+                "market_cap": 22540973768.991547,
+                "percentage_change": 6.690757317738533
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-13 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42884.5,
+                "volume": 63110.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 3.37
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3044.1034988026954,
+                "volume": 1257382116.3485885,
+                "top_tier_volume": 715530000,
+                "market_cap": 2606111141.354256,
+                "percentage_change": 5.866050994258129
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2859.150605467758,
+                "volume": 1222401301.7451003,
+                "top_tier_volume": 715530000,
+                "market_cap": 2447769680.186636,
+                "percentage_change": 2.153260334466027
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020629113682629275,
+                "volume": 501781848.0978894,
+                "top_tier_volume": 353730000,
+                "market_cap": 1395046558.9424481,
+                "percentage_change": -5.456466265439137
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 1.0034412875159888,
+                "volume": 472613538.9954009,
+                "top_tier_volume": 353730000,
+                "market_cap": 24604380369.892048,
+                "percentage_change": 9.154026006361018
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-14 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43025.9,
+                "volume": 59150.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.33
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2919.389126306525,
+                "volume": 1271910550.3213828,
+                "top_tier_volume": 715530000,
+                "market_cap": 2499340949.152477,
+                "percentage_change": -4.096916302130419
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2623.567014235442,
+                "volume": 1218418325.7459059,
+                "top_tier_volume": 715530000,
+                "market_cap": 2246082378.13785,
+                "percentage_change": -8.23963560302814
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00020748282239036424,
+                "volume": 482982637.2161068,
+                "top_tier_volume": 353730000,
+                "market_cap": 1403105348.4332404,
+                "percentage_change": 0.5776717227919254
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9508479150416016,
+                "volume": 474610914.97400284,
+                "top_tier_volume": 353730000,
+                "market_cap": 23314790876.820072,
+                "percentage_change": -5.2413004257161555
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-15 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 41929.0,
+                "volume": 45280.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -2.55
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3115.831341572969,
+                "volume": 1225827076.3072753,
+                "top_tier_volume": 715530000,
+                "market_cap": 2667518623.1506014,
+                "percentage_change": 6.728880829770473
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2513.230877884562,
+                "volume": 1224038234.1254332,
+                "top_tier_volume": 715530000,
+                "market_cap": 2151621649.601153,
+                "percentage_change": -4.205577206612132
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0001963672841177843,
+                "volume": 487838776.8827055,
+                "top_tier_volume": 353730000,
+                "market_cap": 1327936372.8944943,
+                "percentage_change": -5.357329413837857
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8774443217975926,
+                "volume": 475065730.08429,
+                "top_tier_volume": 353730000,
+                "market_cap": 21514934770.47697,
+                "percentage_change": -7.719803775433149
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-16 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42271.7,
+                "volume": 30110.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.82
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3238.8022689979794,
+                "volume": 1239134283.2063386,
+                "top_tier_volume": 715530000,
+                "market_cap": 2772796221.0217104,
+                "percentage_change": 3.9466490302049073
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2742.9189465600984,
+                "volume": 1200745191.6855881,
+                "top_tier_volume": 715530000,
+                "market_cap": 2348261689.943702,
+                "percentage_change": 9.139155128830401
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00018735819928035924,
+                "volume": 464113316.3666942,
+                "top_tier_volume": 353730000,
+                "market_cap": 1267012316.752163,
+                "percentage_change": -4.587874644139429
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8990673446639292,
+                "volume": 456618016.17136776,
+                "top_tier_volume": 353730000,
+                "market_cap": 22045131291.159546,
+                "percentage_change": 2.4643185133432
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-17 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 41368.7,
+                "volume": 35460.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -2.14
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2950.622269811404,
+                "volume": 1219705204.6155562,
+                "top_tier_volume": 715530000,
+                "market_cap": 2526080198.754074,
+                "percentage_change": -8.897733645090126
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2924.3078754490734,
+                "volume": 1156015008.2179997,
+                "top_tier_volume": 715530000,
+                "market_cap": 2503551977.7679505,
+                "percentage_change": 6.612989024573809
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00017247000893414992,
+                "volume": 468672415.5316015,
+                "top_tier_volume": 353730000,
+                "market_cap": 1166330731.343825,
+                "percentage_change": -7.946377795791538
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8789787276658158,
+                "volume": 445617640.34979665,
+                "top_tier_volume": 353730000,
+                "market_cap": 21552558402.365803,
+                "percentage_change": -2.234384011091248
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-18 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42659.7,
+                "volume": 61580.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 3.12
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2957.825066736487,
+                "volume": 1221037872.310899,
+                "top_tier_volume": 715530000,
+                "market_cap": 2532246641.295451,
+                "percentage_change": 0.24411111509515804
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2653.7307521525863,
+                "volume": 1206448230.8700156,
+                "top_tier_volume": 715530000,
+                "market_cap": 2271906090.5975866,
+                "percentage_change": -9.25268934807132
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00017281597487363756,
+                "volume": 455901042.971449,
+                "top_tier_volume": 353730000,
+                "market_cap": 1168670330.6151206,
+                "percentage_change": 0.20059484059035543
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8225205037338074,
+                "volume": 466969121.3620081,
+                "top_tier_volume": 353730000,
+                "market_cap": 20168202751.55296,
+                "percentage_change": -6.423161580023306
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-19 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42259.3,
+                "volume": 55290.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -0.94
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2800.7368328406915,
+                "volume": 1198013176.0079448,
+                "top_tier_volume": 715530000,
+                "market_cap": 2397760610.61597,
+                "percentage_change": -5.310937271524256
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2627.337392886593,
+                "volume": 1184280672.9705873,
+                "top_tier_volume": 715530000,
+                "market_cap": 2249310266.353133,
+                "percentage_change": -0.9945756269577901
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0001770729518200437,
+                "volume": 474987849.26256484,
+                "top_tier_volume": 353730000,
+                "market_cap": 1197458193.8842142,
+                "percentage_change": 2.4633006002592035
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.824185587774957,
+                "volume": 473014159.3582228,
+                "top_tier_volume": 353730000,
+                "market_cap": 20209030612.241947,
+                "percentage_change": 0.20243678225540657
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-20 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43662.8,
+                "volume": 70190.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 3.32
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2604.1258115698693,
+                "volume": 1146090475.4914067,
+                "top_tier_volume": 715530000,
+                "market_cap": 2229438418.795468,
+                "percentage_change": -7.0199748496686265
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2722.227678586481,
+                "volume": 1208203239.6601002,
+                "top_tier_volume": 715530000,
+                "market_cap": 2330547527.4600677,
+                "percentage_change": 3.6116520838473
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.000181840628763413,
+                "volume": 463396260.6559255,
+                "top_tier_volume": 353730000,
+                "market_cap": 1229699672.681227,
+                "percentage_change": 2.6924930625286168
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8087401182347274,
+                "volume": 484344883.3480193,
+                "top_tier_volume": 353730000,
+                "market_cap": 19830307699.115517,
+                "percentage_change": -1.8740281035400665
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-21 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43865.9,
+                "volume": 48960.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.47
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2826.053546973642,
+                "volume": 1175720534.6416945,
+                "top_tier_volume": 715530000,
+                "market_cap": 2419434699.815077,
+                "percentage_change": 8.52215873817502
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2941.997474429207,
+                "volume": 1247745722.0509832,
+                "top_tier_volume": 715530000,
+                "market_cap": 2518696358.0448856,
+                "percentage_change": 8.07315999214444
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0001809748596716065,
+                "volume": 451179350.0461786,
+                "top_tier_volume": 353730000,
+                "market_cap": 1223844897.6727378,
+                "percentage_change": -0.4761142202895363
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8239733127782823,
+                "volume": 475333845.85320103,
+                "top_tier_volume": 353730000,
+                "market_cap": 20203825629.323483,
+                "percentage_change": 1.8835710261047842
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-22 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43968.9,
+                "volume": 44500.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.23
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2879.698907960799,
+                "volume": 1228122332.9254673,
+                "top_tier_volume": 715530000,
+                "market_cap": 2465361447.3798656,
+                "percentage_change": 1.8982429064235
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2895.6038033232926,
+                "volume": 1230952123.267138,
+                "top_tier_volume": 715530000,
+                "market_cap": 2478977911.1507497,
+                "percentage_change": -1.5769446272184642
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0001920140903381029,
+                "volume": 457861460.18832177,
+                "top_tier_volume": 353730000,
+                "market_cap": 1298497842.0095346,
+                "percentage_change": 6.099869720318043
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.7478498945614536,
+                "volume": 467505765.83248883,
+                "top_tier_volume": 353730000,
+                "market_cap": 18337279414.64684,
+                "percentage_change": -9.238578123380599
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-23 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43710.4,
+                "volume": 21290.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -0.59
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3120.4113551709597,
+                "volume": 1211827603.3025932,
+                "top_tier_volume": 715530000,
+                "market_cap": 2671439654.2423415,
+                "percentage_change": 8.358944976668287
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2820.7399380152992,
+                "volume": 1169708909.6134229,
+                "top_tier_volume": 715530000,
+                "market_cap": 2414885624.6891546,
+                "percentage_change": -2.58543193036533
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0002079308166437534,
+                "volume": 436317751.8673959,
+                "top_tier_volume": 353730000,
+                "market_cap": 1406134915.5354993,
+                "percentage_change": 8.28935328528442
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8056305174153476,
+                "volume": 475473327.4799425,
+                "top_tier_volume": 353730000,
+                "market_cap": 19754060287.024323,
+                "percentage_change": 7.726232667021665
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-24 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42981.5,
+                "volume": 30860.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -1.67
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3145.063432213087,
+                "volume": 1240978804.4765828,
+                "top_tier_volume": 715530000,
+                "market_cap": 2692544735.8081555,
+                "percentage_change": 0.7900265136926654
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3042.9642567761225,
+                "volume": 1183416881.9870546,
+                "top_tier_volume": 715530000,
+                "market_cap": 2605135815.995143,
+                "percentage_change": 7.878227828304607
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00021064347893045437,
+                "volume": 452525525.17753214,
+                "top_tier_volume": 353730000,
+                "market_cap": 1424479330.3603675,
+                "percentage_change": 1.3045984864035547
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8321228065849082,
+                "volume": 478418260.65696764,
+                "top_tier_volume": 353730000,
+                "market_cap": 20403651217.46195,
+                "percentage_change": 3.2883919609393795
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-25 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43578.5,
+                "volume": 32670.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 1.39
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3014.4906656788476,
+                "volume": 1271236779.8793235,
+                "top_tier_volume": 715530000,
+                "market_cap": 2580759068.285297,
+                "percentage_change": -4.151673546449238
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 2916.927596539716,
+                "volume": 1151591756.4437714,
+                "top_tier_volume": 715530000,
+                "market_cap": 2497233589.743515,
+                "percentage_change": -4.141904064622063
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00022413229931419278,
+                "volume": 432408720.3118963,
+                "top_tier_volume": 353730000,
+                "market_cap": 1515697657.769035,
+                "percentage_change": 6.403625904883514
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8864387516083871,
+                "volume": 467638606.4111303,
+                "top_tier_volume": 353730000,
+                "market_cap": 21735478189.437653,
+                "percentage_change": 6.5273953067571275
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-26 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42513.3,
+                "volume": 56030.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -2.44
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3022.2777953667414,
+                "volume": 1322663354.9553483,
+                "top_tier_volume": 715530000,
+                "market_cap": 2587425768.496631,
+                "percentage_change": 0.2583232310702982
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3125.217057355728,
+                "volume": 1146833115.9854712,
+                "top_tier_volume": 715530000,
+                "market_cap": 2675553901.3468437,
+                "percentage_change": 7.140714122047484
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00024445614132825313,
+                "volume": 424874295.10672873,
+                "top_tier_volume": 353730000,
+                "market_cap": 1653137909.9407957,
+                "percentage_change": 9.06778812167987
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.916804460217265,
+                "volume": 469030029.9973603,
+                "top_tier_volume": 353730000,
+                "market_cap": 22480045364.52734,
+                "percentage_change": 3.4255845148670723
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-27 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 43446.5,
+                "volume": 50100.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 2.2
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3113.0428768858524,
+                "volume": 1363894061.711083,
+                "top_tier_volume": 715530000,
+                "market_cap": 2665131368.9421873,
+                "percentage_change": 3.0032011504123544
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3282.4491347361854,
+                "volume": 1113316901.7178848,
+                "top_tier_volume": 715530000,
+                "market_cap": 2810163078.9916425,
+                "percentage_change": 5.03107702584642
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0002527223496081251,
+                "volume": 405244487.5160474,
+                "top_tier_volume": 353730000,
+                "market_cap": 1709038253.4734764,
+                "percentage_change": 3.381468853659192
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.8410874320321635,
+                "volume": 478404265.394463,
+                "top_tier_volume": 353730000,
+                "market_cap": 20623463833.42865,
+                "percentage_change": -8.25879797390581
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-28 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42581.1,
+                "volume": 49840.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -1.99
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3041.3610641328974,
+                "volume": 1371151098.2473917,
+                "top_tier_volume": 715530000,
+                "market_cap": 2603763294.2622623,
+                "percentage_change": -2.3026285081130027
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3403.450673570956,
+                "volume": 1135779221.6568222,
+                "top_tier_volume": 715530000,
+                "market_cap": 2913754648.267239,
+                "percentage_change": 3.686318778082015
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00023217130603384457,
+                "volume": 415840175.36029255,
+                "top_tier_volume": 353730000,
+                "market_cap": 1570061547.726212,
+                "percentage_change": -8.131866297597847
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9017188261096122,
+                "volume": 487392393.7590059,
+                "top_tier_volume": 353730000,
+                "market_cap": 22110145616.20769,
+                "percentage_change": 7.2086910074207395
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-29 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42072.4,
+                "volume": 60980.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": -1.19
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 2879.7666350295276,
+                "volume": 1306825139.6463182,
+                "top_tier_volume": 715530000,
+                "market_cap": 2465419429.7278557,
+                "percentage_change": -5.313227390495343
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3662.5369072548124,
+                "volume": 1097330948.2312386,
+                "top_tier_volume": 715530000,
+                "market_cap": 3135562980.487409,
+                "percentage_change": 7.612457430212113
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00023485353551512024,
+                "volume": 430713575.4926679,
+                "top_tier_volume": 353730000,
+                "market_cap": 1588200160.299269,
+                "percentage_change": 1.155280351864274
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9604422212155433,
+                "volume": 471627606.50014585,
+                "top_tier_volume": 353730000,
+                "market_cap": 23550043264.205124,
+                "percentage_change": 6.512384282724596
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-30 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42136.7,
+                "volume": 35180.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.15
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3022.6900863541855,
+                "volume": 1283040120.8445299,
+                "top_tier_volume": 715530000,
+                "market_cap": 2587778738.143123,
+                "percentage_change": 4.963021988870015
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3509.3767256002698,
+                "volume": 1118433934.7629685,
+                "top_tier_volume": 715530000,
+                "market_cap": 3004439825.1877484,
+                "percentage_change": -4.181805822930021
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.0002347281837262461,
+                "volume": 426349522.49546874,
+                "top_tier_volume": 353730000,
+                "market_cap": 1587352467.1583202,
+                "percentage_change": -0.05337445254941092
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9679659628192097,
+                "volume": 468114398.73442286,
+                "top_tier_volume": 353730000,
+                "market_cap": 23734525408.327023,
+                "percentage_change": 0.783362230176024
+            }
+        ]
+    },
+    {
+        "timestamp": "2023-12-31 00:00:00",
+        "data": [
+            {
+                "place": 1,
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "price": 42272.5,
+                "volume": 35580.0,
+                "top_tier_volume": null,
+                "market_cap": null,
+                "percentage_change": 0.32
+            },
+            {
+                "place": 2,
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "price": 3291.2950892562194,
+                "volume": 1260204439.9140131,
+                "top_tier_volume": 715530000,
+                "market_cap": 2817736257.9718056,
+                "percentage_change": 8.886289868572387
+            },
+            {
+                "place": 3,
+                "name": "Solana",
+                "symbol": "SOL",
+                "price": 3335.3944697610095,
+                "volume": 1141413590.3573391,
+                "top_tier_volume": 715530000,
+                "market_cap": 2855490521.8808866,
+                "percentage_change": -4.957639758937563
+            },
+            {
+                "place": 4,
+                "name": "Terra Classic",
+                "symbol": "LUNC",
+                "price": 0.00022137182716913738,
+                "volume": 424441703.8652646,
+                "top_tier_volume": 353730000,
+                "market_cap": 1497029928.1405988,
+                "percentage_change": -5.690137564684477
+            },
+            {
+                "place": 5,
+                "name": "USD Coin",
+                "symbol": "USDC",
+                "price": 0.9132887484622002,
+                "volume": 481119458.45800483,
+                "top_tier_volume": 353730000,
+                "market_cap": 22393840112.29315,
+                "percentage_change": -5.648671178246965
+            }
+        ]
+    }
+]
