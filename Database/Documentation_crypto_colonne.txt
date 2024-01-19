@@ -1,0 +1,17 @@
+"place" : Cela représente le classement de la cryptomonnaie par rapport à d'autres, probablement sur la base de la capitalisation boursière.
+
+"name" : C'est le nom de la cryptomonnaie concernée. Par exemple, Bitcoin, Ethereum, etc.
+
+"price" : C'est le prix de la cryptomonnaie au moment de la mesure. 
+        Il est généralement exprimé en unités de devise (par exemple, dollars américains, euros, etc.).
+
+"volume" : Cela représente la quantité totale de la cryptomonnaie échangée pendant une période spécifique.
+
+"top_tier_volume" : Cela pourrait indiquer le volume de la cryptomonnaie échangée uniquement sur les principales plateformes
+                   ou échanges, distinguant le volume échangé sur des marchés plus petits.
+
+"market_cap" : La capitalisation boursière représente la valeur totale de la cryptomonnaie en circulation, 
+               calculée en multipliant le prix actuel par l'offre en circulation.
+
+"percentage_change" : C'est la variation en pourcentage du prix de la cryptomonnaie par rapport à une période précédente.
+                      Cela peut être utilisé pour évaluer la performance à court terme.

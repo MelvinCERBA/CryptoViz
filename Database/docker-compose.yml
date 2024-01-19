@@ -35,9 +35,6 @@ networks:
     name: db-network
   kafka-network:
     external: true
-      
-
-
 
 volumes:
   db-data:
