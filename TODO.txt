@@ -1,0 +1,6 @@
+- SECU: user onyl SELECT (READ) dans la tabase pour Grafana (JULES)
+- Faire un readme commands
+- Faire des readme propre
+
+En cours:
+-  Grafana
