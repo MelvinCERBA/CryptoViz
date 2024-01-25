@@ -12,6 +12,7 @@ services:
       - "5433:5432" # postgres already installed on certains machine
     volumes:
       - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - default
       - kafka-network
