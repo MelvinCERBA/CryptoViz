@@ -9,6 +9,8 @@ check_network() {
     docker network ls --filter name=$1 -q | wc -l
 }
 
+# CREATED BY DOCKER AUTOMATICALLY
+
 # Create "confluent-network" if it doesn't exist
 # if [ $(check_network "confluent-network") -eq 0 ]; then
 #     echo "Creating confluent-network..."
