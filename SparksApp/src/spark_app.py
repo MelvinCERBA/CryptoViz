@@ -3,12 +3,17 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType
 from pyspark.sql.functions import (
     from_json,
+    window,
     col,
     regexp_replace,
     udf,
     explode,
     split,
     lit,
+    min,
+    max,
+    first,
+    last,
 )
 from pyspark.sql.types import (
     StructType,
@@ -51,10 +56,44 @@ def main():
         .option("subscribe", kafka_topic)
     )
 
+    ensure_table_exists(
+        spark,
+        "cryptocompare",
+        StructType(
+            [
+                StructField("timestamp", TimestampType()),
+                StructField("name", StringType()),
+                StructField("symbol", StringType()),
+                StructField("place", IntegerType()),
+                StructField("price", DoubleType()),
+                StructField("volume", DoubleType()),
+                StructField("top_tier_volume", DoubleType()),
+                StructField("market_cap", DoubleType()),
+                StructField("percentage_change", DoubleType()),
+            ]
+        ),
+    )
+    ensure_table_exists(
+        spark,
+        "cryptocompare_ohlc",
+        StructType(
+            [
+                StructField("name", StringType()),
+                StructField("window_start", TimestampType()),
+                StructField("window_end", TimestampType()),
+                StructField("window", IntegerType()),
+                StructField("open", DoubleType()),
+                StructField("close", DoubleType()),
+                StructField("high", DoubleType()),
+                StructField("low", DoubleType()),
+            ]
+        ),
+    )
+
     # Generate DataFrame from the Stream
     # (https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame)
     kafka_df = kafka_stream_reader.load()
-    query_raw = kafka_df.writeStream.outputMode("update").format("console").start()
+    # query_raw = kafka_df.writeStream.outputMode("update").format("console").start()
     # +----+--------------------+--------------------+---------+------+--------------------+-------------+
     # | key|               value|               topic|partition|offset|           timestamp|timestampType|
     # +----+--------------------+--------------------+---------+------+--------------------+-------------+
@@ -85,19 +124,18 @@ def main():
     parsed_df = kafka_df.select(
         from_json(col("value").cast("string"), json_schema).alias("parsed_data")
     )
-    query_parsed = parsed_df.writeStream.outputMode("update").format("console").start()
+    # query_parsed = parsed_df.writeStream.outputMode("update").format("console").start()
     # +--------------------+
     # |         parsed_data|
     # +--------------------+
     # |{2023-12-03 17:27...|
     # +--------------------+
 
-
     # Explode the nested JSON array into individual columns
     exploded_df = parsed_df.select(
         col("parsed_data.timestamp"), explode(col("parsed_data.data")).alias("data")
     )
-    query_exploded = exploded_df.writeStream.outputMode("update").format("console").start()
+    # query_exploded = exploded_df.writeStream.outputMode("update").format("console").start()
     # +---------+----+
     # |timestamp|data|
     # +---------+----+
@@ -114,7 +152,7 @@ def main():
         col("data.market_cap").alias("market_cap"),
         col("data.percentage_change").alias("percentage_change"),
     )
-    query_flat = flattened_df.writeStream.outputMode("update").format("console").start()
+    # query_flat = flattened_df.writeStream.outputMode("update").format("console").start()
     # +---------+-----+----+-----+------+---------------+----------+-----------------+
     # |timestamp|place|name|price|volume|top_tier_volume|market_cap|percentage_change|
     # +---------+-----+----+-----+------+---------------+----------+-----------------+
@@ -125,7 +163,6 @@ def main():
     cleaned_df.printSchema()
 
     # save to DB
-    save_cryptocompare(spark, cleaned_df)
 
     # Display data in console
     query_clean = cleaned_df.writeStream.outputMode("update").format("console").start()
@@ -134,12 +171,44 @@ def main():
     # +---------+-----+----+-----+------+---------------+----------+-----------------+------+
     # +---------+-----+----+-----+------+---------------+----------+-----------------+------+
 
-    query = (cleaned_df.writeStream
-             .foreachBatch(foreach_batch_function)
-             .start())
+    ohlc_df = (
+        cleaned_df.withWatermark(
+            "timestamp", "30 seconds"
+        )  # Adjust the watermark as needed
+        .groupBy(col("name"), window(col("timestamp"), "3 minutes"))
+        .agg(
+            first("price").alias("open"),
+            max("price").alias("high"),
+            min("price").alias("low"),
+            last("price").alias("close"),
+        )
+        .select(
+            col("name"),
+            col("window.start").alias("window_start"),
+            col("window.end").alias("window_end"),
+            col("open"),
+            col("high"),
+            col("low"),
+            col("close"),
+        )
+    )
+    ohlc_df.printSchema()
+    # Output the result to a sink (console, memory, database, etc.)
+    q_ohlc = ohlc_df.writeStream.outputMode("update").format("console").start()
 
-    query.awaitTermination()
-    spark.stop() # stop session
+    q_insert_clean_data = save_dstream_query(
+        cleaned_df,
+        "cryptocompare",
+    ).start()
+
+    q_insert_ohlc = save_dstream_query(
+        ohlc_df,
+        "cryptocompare_ohlc",
+    ).start()
+
+    q_insert_clean_data.awaitTermination()
+    q_insert_ohlc.awaitTermination()
+    spark.stop()  # stop session
 
 
 #     return df
@@ -176,57 +245,47 @@ def format_cryptocompare(df):
         df = (
             df.withColumn("price", convert_udf(col("price")).cast("double"))
             .withColumn("volume", convert_udf(col("volume")).cast("double"))
-            .withColumn("top_tier_volume", convert_udf(col("top_tier_volume")).cast("double"))
-            .withColumn("market_cap", convert_udf(col("market_cap")).cast("double"))
             .withColumn(
-                "percentage_change", col("percentage_change").cast("double")
+                "top_tier_volume", convert_udf(col("top_tier_volume")).cast("double")
             )
+            .withColumn("market_cap", convert_udf(col("market_cap")).cast("double"))
+            .withColumn("percentage_change", col("percentage_change").cast("double"))
         )
 
         # Split crypto_name and it's symbol into another col
-        splited = split(df['name'], '\\n')
-        df = df.withColumn('symbol', splited.getItem(1))
-        df = df.withColumn('name', splited.getItem(0))
+        splited = split(df["name"], "\\n")
+        df = df.withColumn("symbol", splited.getItem(1))
+        df = df.withColumn("name", splited.getItem(0))
 
         # Convert place to integer
-        df = df.withColumn('place', col("place").cast("integer"))
-        
+        df = df.withColumn("place", col("place").cast("integer"))
+
     except Exception as e:
         print(e)  # crash with empty dataframe
 
     return df
 
 
-def save_cryptocompare(spark, df):
-    cryptocompare_schema = StructType([
-        StructField("timestamp", TimestampType()),
-        StructField("name", StringType()),
-        StructField("symbol", StringType()),
-        StructField("place", IntegerType()),
-        StructField("price", DoubleType()),
-        StructField("volume", DoubleType()),
-        StructField("top_tier_volume", DoubleType()),
-        StructField("market_cap", DoubleType()),
-        StructField("percentage_change", DoubleType())
-    ])
-
-    table_name = "cryptocompare"
+def ensure_table_exists(spark, table_name, schema):
     try:
-        df_existing = spark.read.jdbc(
-            url=database_url, table=table_name, properties=properties
-        )
+        _ = spark.read.jdbc(url=database_url, table=table_name, properties=properties)
     except:
         # creates the table if the table doesn't exist
-        df_schema = spark.createDataFrame([], cryptocompare_schema)
-        df_schema.write.jdbc(url=database_url, table=table_name, mode='overwrite', properties=properties)
-    
+        df_schema = spark.createDataFrame([], schema)
+        df_schema.write.jdbc(
+            url=database_url, table=table_name, mode="overwrite", properties=properties
+        )
+
+
 # See https://spark.apache.org/docs/latest/streaming-programming-guide.html#output-operations-on-dstreams
-def foreach_batch_function(df, epoch_id):
-    # before inserting, check if df is not empty
-    #if df.head(1):
-    table_name = "cryptocompare"
-    df.write.jdbc(url=database_url, table=table_name, mode='append', properties=properties)
-    print('success')
+def save_dstream_query(dstream, table_name, mode="append"):
+    def write_df_to_table(df, epoch_id):
+        df.write.jdbc(
+            url=database_url, table=table_name, mode=mode, properties=properties
+        )
+        print(f"Wrote this df to {table_name} : \n {df}")
+
+    return dstream.writeStream.foreachBatch(write_df_to_table)
 
 
 if __name__ == "__main__":
