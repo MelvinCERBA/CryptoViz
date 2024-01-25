@@ -31,8 +31,8 @@ services:
       - kafka-network
 
 networks:
-  db-network:
-    external: true
+  default:
+    name: db-network
   kafka-network:
     external: true
 
