@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: crypto_viz
     ports:
-      - "5432:5433" # postgres already installed on certains machine
+      - "5433:5432" # postgres already installed on certains machine
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
