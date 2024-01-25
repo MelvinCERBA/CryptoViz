@@ -7,12 +7,13 @@ services:
     #restart: unless-stopped
     environment:
       GF_LOG_LEVEL: debug
-      GF_DATABASE_TYPE: postgres
-      GF_DATABASE_HOST: postgres
-      GF_DATABASE_PORT: 5432
-      GF_DATABASE_NAME: crypto_viz
-      GF_DATABASE_USER: root
-      GF_DATABASE_PASSWORD: root
+      # useless
+      # GF_DATABASE_TYPE: postgres
+      # GF_DATABASE_HOST: postgres
+      # GF_DATABASE_PORT: 5432
+      # GF_DATABASE_NAME: crypto_viz
+      # GF_DATABASE_USER: root
+      # GF_DATABASE_PASSWORD: root
     ports:
       - "3000:3000"
     volumes:
