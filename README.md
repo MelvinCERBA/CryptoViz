@@ -1,4 +1,5 @@
 # CryptoViz Project
+![Overview](CryptoViz-Local.png)  
 
 ## Introduction
 
@@ -58,13 +59,3 @@ For each sub-project, you can either :
 ## Deployment
 
 The application is containerized using Docker. For Terraform cloud ressources provisionning and Kubernetes deployment, refer to the `_Infra` repository.
-
-### CI/CD
-
-
-
-
-## Docker commands
-- docker network list
-- docker network prune
-- docker network inspect {id_network}
