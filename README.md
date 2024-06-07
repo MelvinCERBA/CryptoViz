@@ -1,6 +1,6 @@
 # CryptoViz Project
 ![Overview](CryptoViz-Local.png)  
-
+  
 ## Introduction
 
 CryptoViz is a web-based big-data application that will help our client be fast and competitive. It must help the client with the following tasks:
