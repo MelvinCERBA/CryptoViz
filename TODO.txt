@@ -2,5 +2,11 @@
 - Faire un readme commands
 - Faire des readme propre
 
+COmpetence
+- secu (fait)
+- Js ? ( il peut avoir 3 lignes)
+- Parler des tests
+- Legendes a faire
+
 En cours:
 -  Grafana
